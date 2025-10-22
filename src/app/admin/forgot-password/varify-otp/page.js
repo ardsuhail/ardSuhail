@@ -2,10 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
 export default function VerifyOTP() {
   const [otp, setOtp] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState(null)
   const router = useRouter();
     useEffect(() => {
@@ -22,6 +25,7 @@ export default function VerifyOTP() {
   const handleVerify = async (e) => {
     e.preventDefault();
     if (!email) return;
+    setLoading(true)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -43,12 +47,19 @@ export default function VerifyOTP() {
         setMessage(result.message);
         if (result.success) {
           localStorage.setItem("otpVerified", "true");
-          
+          setMessage("OTP verified successfully. Redirecting...");
           setTimeout(() => router.push("/admin/forgot-password/reset-password"), 1500);
+        }else{
+          setLoading(false)
+          setErro(result.message)
         }
         console.log(result)
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        setLoading(false)
+        setError(error.message)
+        console.error(error)
+      });
   };
 
   return (
@@ -62,15 +73,16 @@ export default function VerifyOTP() {
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
         />
-        <button className="bg-green-600 p-2 rounded hover:bg-green-700">
-          Verify OTP
+        <button type="submit" disabled={loading} className={`bg-green-600 p-2 rounded hover:bg-green-700 ${loading ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] cursor-pointer"} `}>
+         {loading?<div  className='flex justify-center items-center gap-3' ><LoaderCircle className='animate-spin w-6 h-6' /> <span  className='animate-pulse' >Please wait...</span></div>:"Verify OTP"}  
         </button>
          {/* for resend otp */}
         <Link href="/admin/forgot-password" className="text-sm text-blue-400 hover:underline mt-2">
           Resend OTP
         </Link>
       </form>
-      {message && <p className="mt-3 text-sm">{message}</p>}
+      {message && <p className="mt-3 text-green-600 text-sm">{message}</p>}
+      {error && <p className="mt-3  text-red-600 text-sm">{error}</p>}
     </div>
   );
 }

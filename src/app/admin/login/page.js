@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, LoaderCircle } from 'lucide-react'
 import Link from 'next/link'
 const Page = () => {
     const [form, setForm] = useState({
@@ -11,6 +11,9 @@ const Page = () => {
     })
     const [token, setToken] = useState(null);
     const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState("")
+    const [error, setError] = useState("")
     const router = useRouter()
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -18,6 +21,7 @@ const Page = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -39,15 +43,19 @@ const Page = () => {
                 if (result.success) {
                     setToken(result.token); // optional
                     document.cookie = `token=${result.token}; path=/; samesite=strict;`; // direct use
-                    alert(result.message)
+                    setMessage(result.message)
                     localStorage.setItem("notlogin", result.token);
                     window.location.href = "/";
+                } else {
+                    setLoading(false);
+                    setError(result.message)
                 }
 
                 console.log(result)
             })
             .catch((error) => {
-                alert(error.message)
+                setLoading(false);
+                setError(error.message)
                 console.error(error)
             });
     }
@@ -88,10 +96,13 @@ const Page = () => {
 
                     <button
                         type="submit"
-                        className="w-full py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold hover:scale-[1.02] active:scale-100 transition-transform"
+                        disabled={loading}
+                        className={`w-full py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold hover:scale-[1.02] active:scale-100 transition-transform  ${loading ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] cursor-pointer"} `}
                     >
-                        Login
+                        {loading ? <div className='flex justify-center items-center gap-3' ><LoaderCircle className='animate-spin w-6 h-6' /> <span className='animate-pulse' >loading...</span></div> : "Login"}
                     </button>
+                    {message && <p className="mt-3 text-green-600 text-sm">{message}</p>}
+                    {error && <p className="mt-3  text-red-600 text-sm">{error}</p>}
                     <p className="mt-4 text-center text-sm text-gray-300">
                         Forgot your password?{" "}
                         <Link

@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { LoaderCircle } from "lucide-react";
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState(null)
-  
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
   const router = useRouter();
  
    useEffect(() => {
@@ -22,6 +24,7 @@ export default function ResetPassword() {
   const handleReset = async (e) => {
     e.preventDefault();
     if (!email) return;
+    setLoading(true)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -40,15 +43,22 @@ export default function ResetPassword() {
     fetch("/api/admin/reset-password", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        setMessage(result.message);
         if (result.success) {
+          setMessage(result.message);
           localStorage.removeItem("resetEmail");
           localStorage.removeItem("otpVerified");
           setTimeout(() => router.push("/"), 1500);
+        }else{
+          setLoading(false)
+          setError(result.message)
         }
         console.log(result)
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        setLoading(false)
+        setError(error.message)
+        console.error(error)
+      });
   };
 
     if (!email) {
@@ -66,11 +76,12 @@ export default function ResetPassword() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="bg-purple-600 p-2 rounded hover:bg-purple-700">
-          Reset Password
+        <button className={`bg-purple-600 p-2 rounded hover:bg-purple-700 ${loading ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] cursor-pointer"} `} disabled={loading} >
+        {loading?<div  className='flex justify-center items-center gap-3' ><LoaderCircle className='animate-spin w-6 h-6' /> <span  className='animate-pulse' >Please wait...</span></div>:"Reset Password"}  
         </button>
       </form>
-      {message && <p className="mt-3 text-sm">{message}</p>}
+     {message && <p className="mt-3 text-green-600 text-sm">{message}</p>}
+      {error && <p className="mt-3  text-red-600 text-sm">{error}</p>}
     </div>
   );
 }

@@ -19,8 +19,8 @@ export async function POST(req) {
         const ComparePassword = await bcrypt.compare(password, admin.password)
         if (!ComparePassword) {
             return NextResponse.json({
-                success: true,
-                error: false,
+                success: false,
+                error: true,
                 message: "Invaled Password"
             })
         }

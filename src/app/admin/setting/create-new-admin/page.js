@@ -52,7 +52,7 @@ export default function CreateAdminPage() {
         console.log(result)
       })
       .catch((error) => console.error(error));
-
+div
   };
     useEffect(() => {
           const loginToken = localStorage.getItem("notlogin")
