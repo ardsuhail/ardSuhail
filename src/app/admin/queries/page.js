@@ -49,7 +49,7 @@ const Page = ({ query }) => {
     if (!loginToken) {
       router.push("/")
     }
-  }, [token])
+  }, [token,router])
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-white p-6">

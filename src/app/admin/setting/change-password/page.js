@@ -73,7 +73,7 @@ export default function ChangePasswordPage() {
         if (!loginToken) {
             router.push("/")
         }
-    }, [token])
+    }, [token,router])
 
 
     return (

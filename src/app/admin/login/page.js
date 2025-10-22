@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff } from 'lucide-react'
 import Link from 'next/link'
-const page = () => {
+const Page = () => {
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -108,4 +108,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

@@ -23,7 +23,7 @@ const SubmitMessage = ({ message, onClose }) => {
 
       return () => clearInterval(countdown);
     }
-  }, [message]);
+  }, [message,handleClose]);
 
   const handleClose = () => {
     setShow(false); // start fade out animation

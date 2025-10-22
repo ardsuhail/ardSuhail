@@ -2,10 +2,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-export default function resetPassword() {
+export default function ResetPassword() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState(null)
+  
   const router = useRouter();
  
    useEffect(() => {
