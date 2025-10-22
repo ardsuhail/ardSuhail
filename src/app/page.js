@@ -14,7 +14,7 @@ export default function Home() {
       <section className="min-h-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-emerald-500 flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-10">
         <div className="md:w-1/2 text-center md:text-left">
           <h1 className="text-5xl md:text-6xl font-bold">
-            Hey, I'm <span className="text-yellow-300">Suhail</span>
+            Hey, I&apos;m <span className="text-yellow-300">Suhail</span>
           </h1>
           <p className="mt-4 text-xl md:text-2xl font-light">
             A Passionate <span className="font-semibold">Web Developer</span>, Next.js & Shopify Expert
