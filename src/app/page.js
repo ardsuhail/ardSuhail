@@ -18,7 +18,7 @@ export default function Home() {
         className="max-w-3xl"
       >
         <h1 className="text-5xl md:text-6xl font-bold mb-4">
-          Hey, I'm{" "}
+          Hey, I&apos;m{" "}
           <span className="bg-gradient-to-r from-indigo-500 to-sky-500 text-transparent bg-clip-text">
             Suhail
           </span>
@@ -57,7 +57,7 @@ export default function Home() {
         <p className="text-base md:text-lg leading-relaxed">
           I specialize in front-end development using <strong>React.js</strong> and <strong>Next.js</strong>.  
           I also focus on responsive UI with <strong>Tailwind CSS</strong> and aim to deliver visually appealing designs.  
-          Let's collaborate to build something amazing together.
+          Let&apos;s collaborate to build something amazing together.
         </p>
       </motion.div>
 
