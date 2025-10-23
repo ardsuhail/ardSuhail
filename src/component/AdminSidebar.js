@@ -9,10 +9,8 @@ const AdminSidebar = () => {
 
   return (
   <nav
-  className={`fixed top-0 right-0 h-full w-[80vw]  
-    bg-white/95 backdrop-blur-lg border-l border-gray-200
-    shadow-xl z-[999]
-    flex flex-col gap-10 px-6 py-8 transition-transform duration-500
+  className={`fixed top-0 right-0 h-full w-[80vw] sm:w-[60vw]  md:w-[40vw] lg:w-[25vw] bg-white/95 backdrop-blur-lg border-l border-gray-200
+    shadow-xl z-[999] flex flex-col gap-10 px-6 py-8 transition-transform duration-500
     ${adminSidebarOpen ? "translate-x-0" : "translate-x-full"}
   `}
 >

@@ -18,12 +18,7 @@ const Navbar = () => {
     // if (!t) router.replace("/");
   }, []);
 
-  const handleLogout = (e) => {
-    localStorage.removeItem("notlogin")
-    setToken(null)
-    window.location.href = "/"
-
-  }
+  
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gray-300 backdrop-blur-md shadow-md px-6 md:px-10 py-4 flex justify-between items-center">
@@ -81,84 +76,7 @@ const Navbar = () => {
 
         </button>
       </div>
-          {/* <button
-            onClick={() => setDropDown(!dropDown)} onBlur={() => {
-              setTimeout(() => {
-                setDropDown(false)
-              }, 500);
-            }}
-            className=" group    cursor-pointer flex gap-2 items-center justify-center
-                    px-2  py-1 sm:px-4 sm:py-2 rounded-lg bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600
-                     text-white font-semibold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300"
-          >
-            Dashboard <span className="text-white">{dropDown ? <ChevronUp /> : <ChevronDown className="animate-bounce" />}</span>
-          </button> */}
-          {/* {dropDown && (
-            <div className="absolute top-20 right-5 z-50">
-              <ul
-                className="flex flex-col gap-2 bg-white/90 backdrop-blur-md shadow-2xl
-                 items-start w-44 py-4 rounded-2xl border border-white/30
-                 transition-all duration-300 ease-in-out animate-slideDown"
-              >
-                <li className="w-full">
-                  <Link
-                    href="/admin/queries"
-                    className="block w-full text-lg text-gray-800 font-medium px-3 py-2 rounded-lg
-                     hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-500
-                     hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    Quries
-                  </Link>
-                </li>
-                <li className="w-full">
-                  <Link
-                    href="/admin/add-project"
-                    className="block w-full text-lg text-gray-800 font-medium px-3 py-2 rounded-lg
-                     hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-500
-                     hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    Add Projects
-                  </Link>
-                </li>
-                <li className="w-full">
-                  <Link
-                    href="/admin/your-projects"
-                    className="block w-full text-lg text-gray-800 font-medium px-3 py-2 rounded-lg
-                     hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-500
-                     hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    Your  Projects
-                  </Link>
-                </li>
-
-                <li className="w-full">
-                  <Link
-                    href="/admin/setting"
-                    className="block w-full text-lg text-gray-800 font-medium px-3 py-2 rounded-lg
-                     hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-500
-                     hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    Settings
-                  </Link>
-
-                </li>
-
-                <button
-                  onClick={async () => {
-                    await fetch("/api/logout", { method: "POST" });
-                    localStorage.removeItem("notlogin"); // agar use kiya ho
-                    window.location.href = "/"; // redirect homepage or login page
-                  }}
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-                >
-                  Logout
-                </button>
-
-
-              </ul>
-            </div>
-          )} */}
-
+       
         </>
       )}
     </nav>

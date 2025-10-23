@@ -4,10 +4,10 @@ import Link from "next/link";
 import { SidebarClose } from "lucide-react";
 import { useAppContext } from "./Context";
 import { Home, Code, FileText, Mail, User } from "lucide-react";
-
+import { usePathname } from "next/navigation";
 const NavSidebar = () => {
   const { sidebarOpen, setSidebarOpen } = useAppContext();
-
+  const pathname = usePathname();
   return (
     <nav
       className={`fixed top-0 left-0 h-full w-[80vw] sm:hidden
@@ -50,7 +50,7 @@ const NavSidebar = () => {
           { label: "Contact Me", href: "/contact", icon: <Mail size={20} /> },
           { label: "About Me", href: "/about", icon: <User size={20} /> },
         ].map(({ label, href, icon }) => {
-          const isActive = window.location.pathname === href; // check active link
+          const isActive = pathname === href; // check active link
           return (
             <li key={label}>
               <Link
