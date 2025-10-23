@@ -68,7 +68,7 @@ const Contact = () => {
 
       {/* LEFT SIDE - IMAGE */}
       <div
-               className="flex justify-center relative bottom-40 w-full md:w-1/2"
+               className="flex justify-center relative bottom-0 md:bottom-40 w-full md:w-1/2"
       >
         <img
           src="/Contact-us.gif"
@@ -140,13 +140,10 @@ const Contact = () => {
         <div className="mt-10 space-y-4 text-gray-700">
           <div className="flex items-center gap-3">
             <FiMail className="text-purple-600 text-xl" />
-            <span>youremail@example.com</span>
+            <span>support@ardsuhail.com</span>
           </div>
       
-          <div className="flex items-center gap-3">
-            <FiMapPin className="text-purple-600 text-xl" />
-            <span>New Delhi, India</span>
-          </div>
+         
         </div>
       </div>
     </div>

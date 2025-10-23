@@ -9,8 +9,19 @@ const About = () => {
     <section className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white py-24 px-6 flex flex-col justify-center items-center">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Profile Image */}
-  
 
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex md:hidden justify-center "
+        >
+          <img
+            src="/hi.gif"
+            alt="Suhail"
+            className="rounded-2xl  w-[280px] md:w-[320px]  hover:scale-105 transition-all duration-300 object-cover object-top max-h-[380px]"
+          />
+        </motion.div>
 
         {/* Text Content */}
         <motion.div
@@ -51,12 +62,12 @@ const About = () => {
               View Projects →
             </Link>
           </div>
-        </motion.div>
-              <motion.div
+        </motion.div >
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex justify-center mt-10 md:mt-5"
+          className=" hidden md:flex justify-center mt-10 md:mt-5"
         >
           <img
             src="/hi.gif"
