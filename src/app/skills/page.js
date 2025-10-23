@@ -117,7 +117,7 @@ const CircularSkill = ({ skill }) => {
 const Skills = () => {
   return (
     <>
-      <h2 className="text-4xl mt-3 md:text-5xl font-bold text-center text-purple-700 mb-12">
+      <h2 className="text-4xl mt-20 md:text-5xl font-bold text-center text-purple-700 mb-12">
         My Skills
       </h2>
     <div className=" overflow-y-scroll h-[90vh] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 bg-gradient-to-b from-[#f0f0f0] to-white py-16 px-5 md:px-16">

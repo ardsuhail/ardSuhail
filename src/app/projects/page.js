@@ -55,7 +55,7 @@ const Projects = () => {
   };
 
   return (
-    <main className="p-8  overflow-y-scroll h-[90vh] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 ">
+    <main className="p-8 mt-14 overflow-y-scroll h-[90vh] scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 ">
     {loading && <div className="flex justify-center items-center    h-[60vh] "><LoaderCircle className="animate-spin  w-14 h-14 " /></div>}
 <div className="  grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       {(projects || []).map((project) => (

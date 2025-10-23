@@ -3,62 +3,73 @@ import React from "react";
 import Link from "next/link";
 import { SidebarClose } from "lucide-react";
 import { useAppContext } from "./Context";
+import { Home, Code, FileText, Mail, User } from "lucide-react";
 
 const NavSidebar = () => {
   const { sidebarOpen, setSidebarOpen } = useAppContext();
 
   return (
     <nav
-      className={`fixed top-0 left-0 h-full w-[80vw] sm:hidden 
-      bg-black/80 backdrop-blur-xl border-r border-white/20
-      shadow-2xl z-[999]
-      flex flex-col gap-10 px-8 py-8 transition-transform duration-500
-      ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-    `}
+      className={`fixed top-0 left-0 h-full w-[80vw] sm:hidden
+    bg-white/95 backdrop-blur-lg border-r border-gray-200
+    shadow-xl z-[999]
+    flex flex-col transition-transform duration-500
+    ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+  `}
     >
-     <div  className="flex items-center justify-between">
-
       {/* Logo */}
-      <Link
-        href="/"
-        onClick={() => setSidebarOpen(false)}
-        className="text-2xl  relative right-3 font-extrabold font-mono text-transparent
-        bg-clip-text bg-gradient-to-r from-cyan-300 to-emerald-300
-        active:scale-110 transition-transform"
-      >
-        &lt; ArdSuhail /&gt;
-      </Link>
+      <div className="flex flex-col items-center px-6 py-6">
+        <div className="flex items-center justify-between w-full">
 
-      <button
-        onClick={() => setSidebarOpen(false)}
-        className="text-white absolute right-2   hover:rotate-180 transition-all duration-300"
+        <Link
+          href="/"
+          onClick={() => setSidebarOpen(false)}
+          className="text-2xl font-extrabold font-mono text-transparent
+        bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500
+        active:scale-110 transition-transform"
         >
-        <SidebarClose size={32} />
-      </button>
+          &lt; ArdSuhail /&gt;
+        </Link>
+        <button
+          onClick={() => setSidebarOpen(false)}
+          className="text-gblack hover:text-gray-900 hover:rotate-180 transition-all duration-300"
+        >
+          <SidebarClose size={32} />
+        </button>
           </div>
+        {/* Divider */}
+        <div className="w-full h-[1px] bg-gray-300 my-6 shadow-sm"></div>
+      </div>
+
       {/* Navigation Links */}
-      <ul className="flex flex-col gap-6 text-xl">
+      <ul className="flex flex-col gap-4 text-lg px-6">
         {[
-          ["Home", "/"],
-          ["Projects", "/projects"],
-          ["Skills", "/skills"],
-          ["Contact Me", "/contact"],
-          ["About Me", "/about"],
-        ].map(([label, href]) => (
-          <li key={label}>
-            <Link
-              href={href}
-              onClick={() => setSidebarOpen(false)}
-              className="block px-4 py-3 rounded-xl text-white font-medium
-              hover:bg-white/20 hover:backdrop-blur-md hover:shadow-lg
-              transition-all duration-300"
-            >
-              {label}
-            </Link>
-          </li>
-        ))}
+          { label: "Home", href: "/", icon: <Home size={20} /> },
+          { label: "Projects", href: "/projects", icon: <Code size={20} /> },
+          { label: "Skills", href: "/skills", icon: <FileText size={20} /> },
+          { label: "Contact Me", href: "/contact", icon: <Mail size={20} /> },
+          { label: "About Me", href: "/about", icon: <User size={20} /> },
+        ].map(({ label, href, icon }) => {
+          const isActive = window.location.pathname === href; // check active link
+          return (
+            <li key={label}>
+              <Link
+                href={href}
+                onClick={() => setSidebarOpen(false)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300
+              ${isActive
+                    ? "bg-blue-500 text-white shadow-lg"
+                    : "text-gray-800 hover:bg-gradient-to-r hover:from-cyan-100 hover:to-emerald-100 hover:shadow-md"
+                  }`}
+              >
+                {icon} {label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
+
   );
 };
 

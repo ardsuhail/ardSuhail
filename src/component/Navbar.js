@@ -26,7 +26,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="relative w-full z-50 bg-gradient-to-r from-blue-600 via-indigo-700 to-emerald-600 shadow-lg backdrop-blur-lg bg-opacity-80 px-10 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-300 backdrop-blur-md shadow-md px-6 md:px-10 py-4 flex justify-between items-center">
       {/* Logo */}
       <div className=" absolute left-2 sidebar flex sm:hidden"> 
         <button
@@ -34,21 +34,23 @@ const Navbar = () => {
           className="text-white focus:outline-none md:hidden"
         >
         
-          <SidebarOpen className="w-8 h-8 hover:scale-110 transition-transform duration-300" />
+          <SidebarOpen className="w-8 h-8 text-gray-900 hover:scale-110 transition-transform duration-300" />
 
         </button>
       </div>
-      <div className="logo   hover:scale-110 transition-transform duration-300 ">
-        <Link
-          href="/"
-          className=" text-3xl ml-10 md:ml-0 lg:ml-4 sm:text-3xl md:text-4xl font-mono font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-emerald-300 tracking-tight    "
-        >
-          &lt;ArdSuhail/&gt;
-        </Link>
-      </div>
+  <div className="logo hover:scale-110 transition-transform duration-300">
+  <Link
+    href="/"
+    className="text-3xl ml-14 sm:ml-0 sm:text-3xl md:text-4xl lg:text-4xl font-mono font-extrabold text-transparent bg-clip-text 
+               bg-gradient-to-r from-indigo-500 to-sky-500 tracking-tight"
+  >
+    &lt;ArdSuhail/&gt;
+  </Link>
+</div>
+
 
       {/* Navigation Links */}
-      <ul className="hidden mr-5 sm:flex gap-6 md:gap-10 items-center text-lg font-medium text-gray-200">
+      <ul className="hidden mr-5 sm:flex gap-6 md:gap-10  lg:mr-5 items-center text-lg font-medium text-gray-200">
         {[
           ["Home", "/"],
           ["About", "/about"],
@@ -56,10 +58,10 @@ const Navbar = () => {
           ["Projects", "/projects"],
           ["Contact", "/contact"],
         ].map(([label, href]) => (
-          <li key={label} className="relative group  hover:scale-x-105 duration-300 transition-all ">
+          <li key={label} className="relative text-gray-700 group  hover:scale-x-105 duration-300 transition-all ">
             <Link
               href={href}
-              className="transition-all duration-300 hover:text-cyan-300   "
+              className="transition-all duration-300 hover:text-cyan-600   "
             >
               {label}
               <span className="absolute  left-0 -bottom-1 w-0 h-[2.5px] bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full transition-all duration-300 group-hover:w-full  "></span>
@@ -75,7 +77,7 @@ const Navbar = () => {
           className="text-white active:scale-110 focus:outline-none "
         >
         
-          <SidebarOpen className="w-8 h-8 hover:scale-110 transition-transform duration-300" />
+          <SidebarOpen className="w-8 h-8 text-gray-900 hover:scale-110 transition-transform duration-300" />
 
         </button>
       </div>

@@ -64,7 +64,7 @@ const Contact = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f8f9ff] via-[#eef2ff] to-white flex flex-col md:flex-row items-center justify-center px-6 md:px-16 py-16 gap-10">
+    <div className="min-h-screen  mt-6 bg-gradient-to-br from-[#f8f9ff] via-[#eef2ff] to-white flex flex-col md:flex-row items-center justify-center px-6 md:px-16 py-16 gap-10">
 
       {/* LEFT SIDE - IMAGE */}
       <div

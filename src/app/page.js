@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,39 +9,65 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <main className="bg-gray-900 text-white min-h-screen flex flex-col justify-center">
-      
+     <main className="flex flex-col  mt-20 xl:mt-5 sm:mt-0 items-center justify-center text-center min-h-screen bg-gradient-to-b from-white to-gray-100 px-6">
       {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-emerald-500 flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-10">
-        <div className="md:w-1/2 text-center md:text-left">
-          <h1 className="text-5xl md:text-6xl font-bold">
-            Hey, I&apos;m <span className="text-yellow-300">Suhail</span>
-          </h1>
-          <p className="mt-4 text-xl md:text-2xl font-light">
-            A Passionate <span className="font-semibold">Web Developer</span>, Next.js & Shopify Expert
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-3xl"
+      >
+        <h1 className="text-5xl md:text-6xl font-bold mb-4">
+          Hey, I'm{" "}
+          <span className="bg-gradient-to-r from-indigo-500 to-sky-500 text-transparent bg-clip-text">
+            Suhail
+          </span>
+        </h1>
+        <p className="text-gray-600 text-lg md:text-xl mb-8">
+          A passionate <span className="font-semibold text-gray-800">Web Developer</span> creating clean and modern websites.  
+          I love building user-friendly digital experiences using modern web technologies.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex gap-4 justify-center flex-wrap">
+          <Link
+            href="/projects"
+            className="px-6 py-3 bg-indigo-600 text-white rounded-2xl shadow-md hover:bg-indigo-700 transition"
+          >
+            View Projects
+          </Link>
+          <button
               onClick={() => setShowModal(true)}
               className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-medium"
             >
               Hire Me
             </button>
-            <Link href="/projects">
-              <button className="border-2 cursor-pointer border-yellow-300 px-6 py-2 rounded-xl hover:bg-yellow-300 hover:text-black duration-300">
-                View Projects
-              </button>
-            </Link>
-            <HireMeModal isOpen={showModal} onClose={() => setShowModal(false)} />
-          </div>
+             <HireMeModal isOpen={showModal} onClose={() => setShowModal(false)} />
         </div>
-        <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-          <img src="/coding.gif" alt="Coding Illustration" className="w-80 md:w-96 drop-shadow-2xl" />
-        </div>
-      </section>
+      </motion.div>
 
-   
+      {/* Skills Summary */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="mt-16 max-w-4xl text-gray-700"
+      >
+        <h2 className="text-3xl font-semibold mb-4">What I Do</h2>
+        <p className="text-base md:text-lg leading-relaxed">
+          I specialize in front-end development using <strong>React.js</strong> and <strong>Next.js</strong>.  
+          I also focus on responsive UI with <strong>Tailwind CSS</strong> and aim to deliver visually appealing designs.  
+          Let's collaborate to build something amazing together.
+        </p>
+      </motion.div>
 
+      {/* Footer Hint */}
+    
     </main>
   );
 }
+
+
+
+
+
