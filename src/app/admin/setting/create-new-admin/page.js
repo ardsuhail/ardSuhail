@@ -64,10 +64,10 @@ div
       
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div className="bg-gray-800  mx-4 p-8 rounded-2xl shadow-lg w-full max-w-md">
         <h1 className="text-3xl font-bold mb-6 text-center">Create New Admin</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex   flex-col gap-4">
           <input
             type="text"
             name="username"

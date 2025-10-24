@@ -77,8 +77,8 @@ export default function ChangePasswordPage() {
 
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center py-12">
-            <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <div className="min-h-screen mt-12 bg-gray-900 text-white flex items-center justify-center py-12">
+            <div className="bg-gray-800 mx-5 p-8 rounded-2xl shadow-lg w-full max-w-md">
                 {/* Header */}
                 <div className="flex flex-col items-center mb-6">
                     <KeyRound className="w-12 h-12 text-yellow-400 mb-2" />

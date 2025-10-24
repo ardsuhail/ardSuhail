@@ -10,7 +10,7 @@ const NavSidebar = () => {
   const pathname = usePathname();
   return (
     <nav
-      className={`fixed top-0 left-0 h-full w-[80vw] sm:hidden
+      className={`fixed top-0 left-0 h-full w-[90vw] sm:hidden
     bg-white/95 backdrop-blur-lg border-r border-gray-200
     shadow-xl z-[999]
     flex flex-col transition-transform duration-500

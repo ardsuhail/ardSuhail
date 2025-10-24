@@ -14,7 +14,7 @@ export default function AdminSettings() {
           }, [token])
         
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center py-12">
+    <div className="min-h-screen mt-12 bg-gray-900 text-white flex flex-col items-center py-12">
       {/* Page Heading */}
       <h1 className="text-4xl font-bold mb-10 flex items-center gap-2">
         <Settings className="w-8 h-8 text-green-400" /> Admin Settings
