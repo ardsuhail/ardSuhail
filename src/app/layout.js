@@ -24,6 +24,11 @@ export const metadata = {
   title: "ardsuhail | Full-Stack MERN & Next.js Developer | Shopify Customization Expert",
   description:
     "Discover ardsuhail (@ardsuhail) – a skilled Full-Stack Web Developer specializing in Next.js, React.js, Node.js, MongoDB, and Shopify API integrations. I build high-performance, SEO-friendly websites, custom Shopify stores, and modern digital solutions that rank on Google.",
+      icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   keywords:
     "ardsuhail, Full-Stack Developer, MERN Stack, Next.js Developer, React.js Developer, Node.js Developer, MongoDB Developer, Shopify Expert, Shopify API, SEO Optimized Website, Tailwind CSS, Modern Web Developer, Portfolio Website, B.Tech Computer Science, Web Applications, High Performance Web Apps, Custom Shopify Store, Responsive Web Design, UI/UX Developer, Suhail ahmed",
   author: "ardsuhail",
