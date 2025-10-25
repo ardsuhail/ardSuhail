@@ -6,7 +6,7 @@ const QueryReplies = ({ userEmail }) => {
   const [replies, setReplies] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Fetch replies for this email
+
   useEffect(() => {
     if (!userEmail) return;
     fetch("/api/reply")

@@ -24,7 +24,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(false)
   const descRefs = useRef({});
 
-  // Fetch projects from API
+
   useEffect(() => {
     setLoading(true)
     fetch("/api/project")
@@ -32,13 +32,13 @@ const Projects = () => {
       .then((data) => {
         console.log("API response:", data);
         setLoading(false)
-        // Safe fallback if data.projects is undefined
+
         setProjects(Array.isArray(data.projects) ? data.projects : Array.isArray(data) ? data : []);
       })
       .catch((err) => console.error("Error fetching projects:", err));
   }, []);
 
-  // Check if "Read More" button is needed
+
   useEffect(() => {
     const newShowButton = {};
     (projects || []).forEach((project) => {
@@ -67,10 +67,10 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="group relative bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100"
         >
-          {/* Premium gradient accent */}
+
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-blue-500"></div>
           
-          {/* Project Image with overlay */}
+
           <div className="relative w-full h-56 overflow-hidden">
             <img
               src={project.project_image?.url || "/placeholder.png"}
@@ -78,22 +78,19 @@ const Projects = () => {
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            {/* Duration badge */}
+
             <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-purple-700 font-semibold text-xs px-3 py-1.5 rounded-full shadow-md">
               Time To Take: {project.duration || "N/A"}
             </div>
           </div>
 
-          {/* Project Content */}
           <div className="p-6 flex flex-col justify-between flex-1">
             <div>
-              {/* Title */}
+
               <h3 className="text-xl font-bold text-gray-800 mb-3  group-hover:text-purple-700 transition-colors">
                 {project.title}
               </h3>
 
-              {/* Description */}
               <div className="mb-4">
                 <p className="text-sm font-medium text-gray-500 mb-1">Description</p>
                 <p
@@ -106,7 +103,6 @@ const Projects = () => {
                 </p>
               </div>
 
-              {/* Read More Button */}
               {showButton[project._id] && (
                 <button
                   onClick={() => toggleDesc(project._id)}
@@ -136,7 +132,7 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
+
             <div className="flex flex-col gap-3 mt-auto pt-4 border-t border-gray-100">
               <Link
                 href={project.proj_Link}

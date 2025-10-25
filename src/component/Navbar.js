@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gray-300 backdrop-blur-md shadow-md px-6 md:px-10 py-4 flex justify-between items-center">
-      {/* Logo */}
+ 
       <div className=" absolute left-2 sidebar flex sm:hidden"> 
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -44,7 +44,7 @@ const Navbar = () => {
 </div>
 
 
-      {/* Navigation Links */}
+      
       <ul className="hidden mr-5 sm:flex gap-6 md:gap-10  lg:mr-5 items-center text-lg font-medium text-gray-200">
         {[
           ["Home", "/"],

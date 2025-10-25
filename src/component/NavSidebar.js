@@ -17,7 +17,7 @@ const NavSidebar = () => {
     ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
   `}
     >
-      {/* Logo */}
+   
       <div className="flex flex-col items-center px-6 py-6">
         <div className="flex items-center justify-between w-full">
 
@@ -37,11 +37,11 @@ const NavSidebar = () => {
           <SidebarClose size={32} />
         </button>
           </div>
-        {/* Divider */}
+    
         <div className="w-full h-[1px] bg-gray-300 my-6 shadow-sm"></div>
       </div>
 
-      {/* Navigation Links */}
+
       <ul className="flex flex-col gap-4 text-lg px-6">
         {[
           { label: "Home", href: "/", icon: <Home size={20} /> },

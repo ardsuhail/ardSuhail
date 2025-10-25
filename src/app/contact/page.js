@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { FiMail, FiSend } from "react-icons/fi";
+import { useState } from "react";
 import { LoaderCircle } from "lucide-react";
+import Image from "next/image";
 
 const Contact = () => {
   const [form, setform] = useState({
@@ -66,19 +66,21 @@ const Contact = () => {
   return (
     <div className="min-h-screen  mt-6 bg-gradient-to-br from-[#f8f9ff] via-[#eef2ff] to-white flex flex-col md:flex-row items-center justify-center px-6 md:px-16 py-16 gap-10">
 
-      {/* LEFT SIDE - IMAGE */}
+      
       <div
                className="flex justify-center relative bottom-0 md:bottom-40 w-full md:w-1/2"
       >
-        <img
+        <Image
           src="/Contact-us.gif"
-          
+          width={100}
+          height={100}
           alt="Suhail"
+          unoptimized
           className="rounded-3xl  shadow-2xl w-[240px] md:w-[300px] lg:w-[340px] h-[280px] md:h-[380px] object-cover object-top  hover:scale-105 transition-all duration-300"
         />
       </div>
 
-      {/* RIGHT SIDE - CONTACT FORM */}
+   
       <div
                className="bg-white shadow-2xl rounded-3xl p-8 md:p-10 w-full md:w-1/2"
       >
@@ -90,7 +92,6 @@ const Contact = () => {
           Feel free to reach out for collaborations, freelance work, or just a friendly hello 👋
         </p>
 
-        {/* CONTACT FORM */}
         <form className="space-y-6" method="POST" onSubmit={handleSubmit} >
           <div>
             <label className="block text-gray-700 font-medium mb-2">Full Name</label>
@@ -136,7 +137,7 @@ const Contact = () => {
           </button>
         </form>
 
-        {/* CONTACT DETAILS */}
+       
         <div className="mt-10 space-y-4 text-gray-700">
           <div className="flex items-center gap-3">
             <FiMail className="text-purple-600 text-xl" />

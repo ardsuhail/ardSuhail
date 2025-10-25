@@ -16,7 +16,7 @@ const AdminSidebar = () => {
 >
   <div className="flex items-center justify-between">
 
-    {/* Logo */}
+
     <Link
       href="/"
       onClick={() => setAdminSidebarOpen(false)}
@@ -35,7 +35,7 @@ const AdminSidebar = () => {
     </button>
   </div>
 
-  {/* Navigation Links */}
+
   <ul className="flex flex-col gap-4 text-lg mt-6">
     <li>
       <Link
@@ -82,7 +82,6 @@ const AdminSidebar = () => {
       </Link>
     </li>
 
-    {/* Logout Button */}
     <button
       onClick={async () => {
         await fetch("/api/logout", { method: "POST" });

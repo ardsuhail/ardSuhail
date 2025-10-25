@@ -2,22 +2,17 @@
 import React, { useEffect, useState } from "react";
 
 const Error = ({ error, onClose }) => {
-  // const [timeLeft, setTimeLeft] = useState(3);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (error) {
       setShow(true);
-      // setTimeLeft(3);
-
-
-
     }
   }, [error]);
 
   const handleClose = () => {
-    setShow(false); // start fade out animation
-    setTimeout(() => onClose(), 300); // after animation, close modal
+    setShow(false); 
+    setTimeout(() => onClose(), 300);
   };
 
   if (!error) return null;

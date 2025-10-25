@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader, FileText } from "lucide-react";
 import { Suspense } from "react";
+import Image from "next/image";
 
 const YourProject = () => {
     const [projects, setProjects] = useState([]); // ✅ better naming
@@ -39,7 +40,7 @@ const YourProject = () => {
 
 
 
-    // ✅ Handle Delete
+
     const handleDelete = async (id) => {
         if (!confirm("Are you sure you want to delete this Project?")) return;
 
@@ -58,7 +59,7 @@ const YourProject = () => {
         }
     };
 
-    // ✅ Handle Edit → Push to Create/Edit Page
+
     const handleEdit = (id) => {
         router.push(`/admin/add-project?id=${id}`);
     };
@@ -88,7 +89,7 @@ const YourProject = () => {
             }
         >
             <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black text-white p-6">
-                {/* Header Section */}
+       
                 {loading ? (
                     <div className="flex justify-center items-center h-96">
                         <Loader className="animate-spin w-12 h-12 text-blue-500" />
@@ -106,7 +107,7 @@ const YourProject = () => {
                             </Link>
                         </div>
 
-                        {/* Search Bar */}
+                    
                         <div className="max-w-lg mx-auto mb-10">
                             <input
                                 type="text"
@@ -117,7 +118,7 @@ const YourProject = () => {
                             />
                         </div>
 
-                        {/* Projects Grid */}
+                       
                         {filteredProjects.length > 0 ? (
                             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                                 {filteredProjects.map((item) => (
@@ -125,9 +126,11 @@ const YourProject = () => {
                                         key={item._id}
                                         className="group border border-gray-800 rounded-3xl shadow-lg bg-gray-900/70 backdrop-blur-lg hover:border-purple-500 hover:shadow-purple-500/20 transition-all duration-300 overflow-hidden flex flex-col"
                                     >
-                                        {/* Image */}
+                                    
                                         <div className="relative overflow-hidden">
-                                            <img
+                                            <Image
+                                                width={100}
+                                                height={100}
                                                 src={item.project_image?.url}
                                                 alt={item.title}
                                                 className="object-cover w-full h-52 rounded-t-3xl group-hover:scale-110 transition-transform duration-500"
@@ -139,7 +142,7 @@ const YourProject = () => {
                                             </div>
                                         </div>
 
-                                        {/* Content */}
+                                     
                                         <div className="p-5 flex flex-col justify-between flex-1">
                                             <div className="space-y-2">
                                                 <h2 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">

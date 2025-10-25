@@ -27,7 +27,7 @@ const HireMeModal = ({ isOpen, onClose }) => {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className="bg-white w-[90%] sm:w-[480px] rounded-3xl shadow-2xl p-8 relative"
           >
-            {/* Close Button */}
+       
             <button
               onClick={onClose}
               className="absolute cursor-pointer top-4 right-4 text-gray-400 hover:text-gray-700 transition"
@@ -35,7 +35,6 @@ const HireMeModal = ({ isOpen, onClose }) => {
               <X size={24} />
             </button>
 
-            {/* Header */}
             <h2 className="text-3xl font-semibold text-gray-900 mb-3">
               Let’s Work Together 🤝
             </h2>
@@ -43,7 +42,7 @@ const HireMeModal = ({ isOpen, onClose }) => {
               Click a platform to view my profile and hire me directly.
             </p>
 
-            {/* Platform Buttons */}
+ 
             <div className="flex flex-col gap-4">
               {platforms.map((p) => (
                 <Link
@@ -57,7 +56,7 @@ const HireMeModal = ({ isOpen, onClose }) => {
               ))}
             </div>
 
-            {/* Optional Footer */}
+
             <p className="text-xs text-gray-400 mt-6 text-center">
               Your information will remain confidential.
             </p>

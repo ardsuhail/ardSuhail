@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const ContactSchema=new mongoose.Schema({
+const QueriesSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -13,4 +13,4 @@ const ContactSchema=new mongoose.Schema({
         required:true
     }
 },{timestamps:true})
-export default mongoose.models.Contact ||mongoose.model("Contact",ContactSchema);
+export default mongoose.models.Queries ||mongoose.model("Queries",QueriesSchema);

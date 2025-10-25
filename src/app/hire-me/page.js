@@ -12,14 +12,14 @@ export default function HireMeForm() {
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-6 py-16">
       <div className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8 md:p-10 border border-gray-200">
 
-        {/* Header */}
+        
         <h1 className="text-3xl font-bold text-gray-900 mb-3">Hire Me</h1>
         <p className="text-gray-600 mb-8 leading-relaxed">
           “I think people hire me because I am good at what I love to do.”  
           Let’s discuss your project below and make something great together.
         </p>
 
-        {/* Contact Preference */}
+       
         <div className="mb-6">
           <label className="block text-gray-700 font-medium mb-2">I prefer to contact via *</label>
           <select className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500">
@@ -31,7 +31,6 @@ export default function HireMeForm() {
           </select>
         </div>
 
-        {/* Name + Email */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
             <label className="block text-gray-700 font-medium mb-2">Your Name *</label>
@@ -43,7 +42,7 @@ export default function HireMeForm() {
           </div>
         </div>
 
-        {/* Website + Location */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
             <label className="block text-gray-700 font-medium mb-2">Website (optional)</label>
@@ -55,7 +54,7 @@ export default function HireMeForm() {
           </div>
         </div>
 
-        {/* Project Type */}
+
         <div className="mb-6">
           <label className="block text-gray-700 font-medium mb-2">What can I help you with?</label>
           <div className="flex flex-wrap gap-3">
@@ -88,7 +87,7 @@ export default function HireMeForm() {
           )}
         </div>
 
-        {/* Project Details */}
+
         <div className="mb-6">
           <label className="block text-gray-700 font-medium mb-2">Project Details *</label>
           <textarea
@@ -98,7 +97,6 @@ export default function HireMeForm() {
           ></textarea>
         </div>
 
-        {/* Budget + Timeline */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
             <label className="block text-gray-700 font-medium mb-2">Timeline</label>
@@ -123,7 +121,7 @@ export default function HireMeForm() {
           </div>
         </div>
 
-        {/* Submit Button */}
+
         <button
           onClick={() => setLoading(true)}
           className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"

@@ -20,23 +20,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Suhail | Full-Stack MERN & Next.js Developer | Shopify Customization Expert",
-  description: "Explore Suhail's portfolio – MERN stack apps, Next.js projects, Shopify stores with full customization, Python practice, DSA solutions, and innovative web projects.",
-  keywords: "Suhail, ardsuhail, Portfolio, MERN Developer, Next.js, Shopify Customization, Python, DSA, Projects, Web Development, Full-Stack Developer",
+   metadataBase: new URL('https://www.ardsuhail.com'),
+  title: "ardsuhail | Full-Stack MERN & Next.js Developer | Shopify Customization Expert",
+  description:
+    "Discover ardsuhail (@ardsuhail) – a skilled Full-Stack Web Developer specializing in Next.js, React.js, Node.js, MongoDB, and Shopify API integrations. I build high-performance, SEO-friendly websites, custom Shopify stores, and modern digital solutions that rank on Google.",
+  keywords:
+    "ardsuhail, Full-Stack Developer, MERN Stack, Next.js Developer, React.js Developer, Node.js Developer, MongoDB Developer, Shopify Expert, Shopify API, SEO Optimized Website, Tailwind CSS, Modern Web Developer, Portfolio Website, B.Tech Computer Science, Web Applications, High Performance Web Apps, Custom Shopify Store, Responsive Web Design, UI/UX Developer, Suhail ahmed",
   author: "ardsuhail",
-  // viewport: "width=device-width, initial-scale=1.0",
   robots: "index, follow",
   openGraph: {
-    title: "Suhail | Full-Stack MERN & Next.js Developer",
-    description: "Check out Suhail's portfolio with MERN, Next.js, Shopify, Python, DSA projects, and more.",
-    url: "https://ardsuhail.com", // apna actual portfolio URL dal do
-    siteName: "Suhail Portfolio",
+    title: "ardsuhail | Full-Stack MERN & Next.js Developer",
+    description:
+      "Explore ardsuhail's portfolio and projects – MERN stack apps, Next.js websites, custom Shopify stores, and innovative digital solutions built with SEO, speed, and modern UI/UX in mind.",
+    url: "https://ardsuhail.com", // replace with your actual portfolio URL
+    siteName: "ardsuhail Portfolio",
     images: [
       {
-        url: "/og-image.png", // agar tumhare paas OG image hai
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Suhail Portfolio Preview",
+        alt: "ardsuhail Portfolio Preview - Full Stack Developer",
       },
     ],
     locale: "en_US",
@@ -44,13 +47,15 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Suhail | Full-Stack MERN & Next.js Developer",
-    description: "Portfolio of Suhail – MERN, Next.js, Shopify, Python, DSA projects.",
-    images: ["/og-image.png"], // OG image ka same path use kar sakte ho
+    title: "ardsuhail | Full-Stack MERN & Next.js Developer",
+    description:
+      "Check out ardsuhail's portfolio – MERN, Next.js, React.js projects, custom Shopify stores, and modern web solutions that are SEO-friendly and high-performance.",
+    images: ["/og-image.png"],
     site: "@ardsuhail",
     creator: "@ardsuhail",
   },
-}
+};
+
 
 
 export default function RootLayout({ children }) {

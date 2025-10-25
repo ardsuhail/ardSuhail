@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { LoaderCircle } from 'lucide-react'
 import { Suspense } from 'react'
 import Error from '@/component/Error'
+import Image from 'next/image'
 import SubmitMessage from '@/component/SubmitMessage'
 
 const AddProject = () => {
@@ -26,7 +27,7 @@ const AddProject = () => {
   const [error, setError] = useState(null)
   const [loading, setloading] = useState(false)
 const [token, setToken] = useState(null)
-  // Fetch existing collection for edit mode
+
   useEffect(() => {
 
     if (projectID) {
@@ -49,7 +50,7 @@ const [token, setToken] = useState(null)
     }
   }, [projectID]);
 
-  // Handle input change
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -61,7 +62,7 @@ const [token, setToken] = useState(null)
     setPreview(URL.createObjectURL(files[0])); // sirf ek image show
   };
 
-  // Handle form submit
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setloading(true)
@@ -107,7 +108,6 @@ const [token, setToken] = useState(null)
       });
   };
 
-  // Existing image preview in edit mode
   useEffect(() => {
     if(projectID && form.project_image) {
       setPreview(form.project_image.url);
@@ -218,12 +218,12 @@ const [token, setToken] = useState(null)
             </div>
           </div>
 
-          {/* Project Image */}
+
           <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
             <p className="text-gray-800 mb-3 font-semibold text-lg">Project Image</p>
             {preview && (
               <div className="relative w-32 h-32 border rounded-lg overflow-hidden shadow-md mb-3">
-                <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+                <Image width={100} height={100} src={preview} alt="Preview" className="w-full h-full object-cover" />
               </div>
             )}
             <label className="w-28 h-28 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center cursor-pointer text-3xl text-purple-400 hover:bg-purple-50 hover:border-purple-500 transition-all duration-300">
