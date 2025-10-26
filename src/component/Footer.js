@@ -27,7 +27,7 @@ export default function Footer() {
           </Link>
         </li>
         <li>
-          <Link target="_blank" href="https://github.com/suhail134" className="flex items-center gap-3 px-2 py-1 rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300">
+          <Link target="_blank" href="https://github.com/ardsuhail" className="flex items-center gap-3 px-2 py-1 rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300">
             <FaGithub className="w-5 h-5 text-gray-800" /> GitHub
           </Link>
         </li>
