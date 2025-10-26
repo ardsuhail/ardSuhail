@@ -114,13 +114,13 @@ const [token, setToken] = useState(null)
     }
   }, [projectID, form.project_image]);
 
-  useEffect(() => {
-      const loginToken = localStorage.getItem("notlogin")
-      setToken(loginToken)
-      if (!loginToken) {
-        router.push("/")
-      }
-    }, [token])
+  // useEffect(() => {
+  //     const loginToken = localStorage.getItem("notlogin")
+  //     setToken(loginToken)
+  //     if (!loginToken) {
+  //       router.push("/")
+  //     }
+  //   }, [token])
   
 
   return (

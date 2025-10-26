@@ -43,13 +43,13 @@ const Page = ({ query }) => {
      
       setReadMore((prev) => ({ ...prev, [id]: !prev[id] }));
     };
-    useEffect(() => {
-    const loginToken = localStorage.getItem("notlogin")
-    setToken(loginToken)
-    if (!loginToken) {
-      router.push("/")
-    }
-  }, [token,router])
+  //   useEffect(() => {
+  //   const loginToken = localStorage.getItem("notlogin")
+  //   setToken(loginToken)
+  //   if (!loginToken) {
+  //     router.push("/")
+  //   }
+  // }, [token,router])
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-white p-6">

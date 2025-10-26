@@ -24,25 +24,36 @@ export async function POST(req) {
                 message: "Invaled Password"
             })
         }
-
-
         const token = jwt.sign(
             { email: admin.email, username: admin.username, id: admin._id },
             process.env.JWT_SECRET,
-            { expiresIn: "1d" } // ya jitna duration chahiye
+            { expiresIn: "1d" }
         );
+
+        // const token = jwt.sign(
+        //     { email: admin.email, username: admin.username, id: admin._id },
+        //     process.env.JWT_SECRET,
+        //     { expiresIn: "1d" } // ya jitna duration chahiye
+        // );
 
         // const token = jwt.sign(
         //     { id: admin._id, email: admin.email },
         //     process.env.JWT_SECRET, // .env me JWT_SECRET set karna
         //     { expiresIn: "1d" }
         // );
-        return NextResponse.json({
+        const response = NextResponse.json({
             success: true,
             error: false,
-            message: "Login Succesfully",
-            token
-        })
+            message: "Login Successfully",
+        });
+
+        response.cookies.set("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 60 * 60 * 24, // 1 day
+            path: "/",
+        });
+        return response;
 
     } catch (error) {
         console.log(error)

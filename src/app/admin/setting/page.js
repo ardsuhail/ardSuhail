@@ -5,13 +5,13 @@ import { Settings, Users, UserPlus, Key, LayoutDashboard, Briefcase ,User2Icon} 
 import { useState,useEffect } from "react";
 export default function AdminSettings() {
  const [token, setToken] = useState(null)
-    useEffect(() => {
-            const loginToken = localStorage.getItem("notlogin")
-            setToken(loginToken)
-            if (!loginToken) {
-              router.push("/")
-            }
-          }, [token])
+    // useEffect(() => {
+    //         const loginToken = localStorage.getItem("notlogin")
+    //         setToken(loginToken)
+    //         if (!loginToken) {
+    //           router.push("/")
+    //         }
+    //       }, [token])
         
   return (
     <div className="min-h-screen mt-12 bg-gray-900 text-white flex flex-col items-center py-12">
