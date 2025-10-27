@@ -84,23 +84,16 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </AppProvider>
-           <Script id="insta-fix" strategy="afterInteractive">
-          {`
-            (function() {
-              const ua = navigator.userAgent || navigator.vendor || window.opera;
-              if (ua.toLowerCase().includes("instagram")) {
-                document.body.classList.add("insta-fix");
-                const meta = document.querySelector('meta[name="viewport"]');
-                if (meta) {
-                  meta.setAttribute(
-                    "content",
-                    "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-                  );
-                }
-              }
-            })();
-          `}
-        </Script>
+           <Script id="insta-android-fix" strategy="afterInteractive">
+{`
+  if (navigator.userAgent.toLowerCase().includes("instagram")) {
+    document.documentElement.style.width = "100vw";
+    document.body.style.width = "100vw";
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
+  }
+`}
+</Script>
 
       </body>
     </html>
