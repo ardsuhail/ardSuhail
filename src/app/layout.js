@@ -83,6 +83,23 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </AppProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      (function() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (ua.includes("Instagram")) {
+          document.querySelector('meta[name="viewport"]')?.setAttribute(
+            'content',
+            'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'
+          );
+          document.body.style.zoom = '0.95';
+        }
+      })();
+    `,
+          }}
+        />
+
       </body>
     </html>
   );
