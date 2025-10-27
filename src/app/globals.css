@@ -18,3 +18,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #4338ca, #2563eb);
 }
+
+html, body {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  zoom: 1;
+}
