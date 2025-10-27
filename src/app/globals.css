@@ -24,3 +24,11 @@ html, body {
   -webkit-text-size-adjust: 100%;
   zoom: 1;
 }
+
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    transform: scale(0.98);
+    transform-origin: top center;
+  }
+}
