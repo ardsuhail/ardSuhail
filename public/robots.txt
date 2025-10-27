@@ -11,7 +11,7 @@ Disallow: /api/
 # Block Next.js internal folders & static files
 Disallow: /_next/
 Disallow: /node_modules/
-Disallow: /public/
+
 
 # Sitemap location
 Sitemap: https://www.ardsuhail.com/sitemap.xml
