@@ -13,6 +13,9 @@ const geistSans = Geist({
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1.0,
+  userScalable: false,
+
 };
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -20,11 +23,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-   metadataBase: new URL('https://www.ardsuhail.com'),
+  metadataBase: new URL('https://www.ardsuhail.com'),
   title: "ardsuhail | Full-Stack MERN & Next.js Developer | Shopify Customization Expert",
   description:
     "Discover ardsuhail (@ardsuhail) – a skilled Full-Stack Web Developer specializing in Next.js, React.js, Node.js, MongoDB, and Shopify API integrations. I build high-performance, SEO-friendly websites, custom Shopify stores, and modern digital solutions that rank on Google.",
-      icons: {
+  icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.png',
     apple: '/favicon.png',
@@ -67,14 +70,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  min-h-screen overflow-x-hidden `}
       >
         <AppProvider>
-        <NavSidebar/>
-        <AdminSidebar/>
-        <Navbar/>
-        {children}
-        <Footer/>
+          <NavSidebar />
+          <AdminSidebar />
+          <Navbar />
+          {children}
+          <Footer />
         </AppProvider>
       </body>
     </html>
