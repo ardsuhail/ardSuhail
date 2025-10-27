@@ -84,16 +84,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </AppProvider>
-           <Script id="insta-android-fix" strategy="afterInteractive">
-{`
-  if (navigator.userAgent.toLowerCase().includes("instagram")) {
-    document.documentElement.style.width = "100vw";
-    document.body.style.width = "100vw";
-    document.body.style.margin = "0";
-    document.body.style.padding = "0";
-  }
-`}
-</Script>
+
 
       </body>
     </html>
