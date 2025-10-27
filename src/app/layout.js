@@ -5,6 +5,7 @@ import Footer from "@/component/Footer";
 import NavSidebar from "@/component/NavSidebar";
 import AdminSidebar from "@/component/AdminSidebar";
 import { AppProvider } from "@/component/Context";
+import Script from "next/script";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
