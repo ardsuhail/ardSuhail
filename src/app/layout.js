@@ -83,22 +83,23 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </AppProvider>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-      (function() {
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (ua.includes("Instagram")) {
-          document.querySelector('meta[name="viewport"]')?.setAttribute(
-            'content',
-            'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'
-          );
-          document.body.style.zoom = '0.95';
-        }
-      })();
-    `,
-          }}
-        />
+           <Script id="insta-fix" strategy="afterInteractive">
+          {`
+            (function() {
+              const ua = navigator.userAgent || navigator.vendor || window.opera;
+              if (ua.toLowerCase().includes("instagram")) {
+                document.body.classList.add("insta-fix");
+                const meta = document.querySelector('meta[name="viewport"]');
+                if (meta) {
+                  meta.setAttribute(
+                    "content",
+                    "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+                  );
+                }
+              }
+            })();
+          `}
+        </Script>
 
       </body>
     </html>

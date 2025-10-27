@@ -19,16 +19,17 @@
   background: linear-gradient(180deg, #4338ca, #2563eb);
 }
 
-html, body {
+html,
+body {
   -webkit-text-size-adjust: 100% !important;
   touch-action: manipulation;
+  overflow-x: hidden !important;
   zoom: 1 !important;
-  overflow-x: hidden;
 }
 
-@supports (-webkit-touch-callout: none) {
-  body {
-    transform: scale(0.97);
-    transform-origin: top center;
-  }
+/* Instagram in-app browser zoom fix */
+body.insta-fix {
+  transform: scale(0.9);
+  transform-origin: top center;
 }
+
