@@ -36,7 +36,7 @@ export async function POST(req) {
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
+      await  transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log("Email error:", error);
             } else {

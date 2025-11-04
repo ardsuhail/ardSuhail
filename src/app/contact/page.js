@@ -6,16 +6,38 @@ import { LoaderCircle } from "lucide-react";
 import Image from "next/image";
 
 const Contact = () => {
-  const [form, setform] = useState({
+  const [form, setForm] = useState({
     name: "",
     email: "",
     message: ""
   })
- const [loading, setLoading] = useState(false)
- const [message, setmessage] = useState(null)
- const [error, seterror] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState(null)
+  const [error, setError] = useState(null)
+  const [timer, setTimer] = useState(0);
+
+  // 👇 function to auto-hide message after 5 sec
+  React.useEffect(() => {
+    let countdown;
+    if (message || error) {
+      setTimer(5);
+      countdown = setInterval(() => {
+        setTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(countdown);
+            setMessage(null);
+            setError(null);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(countdown);
+  }, [message, error]);
+
   const handleChange = (e) => {
-    setform({ ...form, [e.target.name]: e.target.value })
+    setForm({ ...form, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
@@ -25,8 +47,8 @@ const Contact = () => {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      "name":form.name ,
-      "email":form.email ,
+      "name": form.name,
+      "email": form.email,
       "message": form.message
     });
 
@@ -40,25 +62,25 @@ const Contact = () => {
     fetch("/api/contact", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        if(result.success){
+        if (result.success) {
           setLoading(false)
-          setform({
-            name:"",
-            email:"",
-            message:""
+          setForm({
+            name: "",
+            email: "",
+            message: ""
           })
-          setmessage(result.message)
+          setMessage(result.message)
 
-        }else{
+        } else {
           setLoading(false)
-          seterror(result.message)
+          setError(result.message)
         }
         console.log(result)
       })
       .catch((error) => {
         setLoading(false)
         console.error(error)
-        seterror(error.message)
+        setError(error.message)
       });
   }
 
@@ -66,9 +88,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen  mt-6 bg-gradient-to-br from-[#f8f9ff] via-[#eef2ff] to-white flex flex-col md:flex-row items-center justify-center px-6 md:px-16 py-16 gap-10">
 
-      
+
       <div
-               className="flex justify-center relative bottom-0 md:bottom-40 w-full md:w-1/2"
+        className="flex justify-center relative bottom-0 md:bottom-40 w-full md:w-1/2"
       >
         <Image
           src="/Contact-us.gif"
@@ -80,9 +102,9 @@ const Contact = () => {
         />
       </div>
 
-   
+
       <div
-               className="bg-white shadow-2xl rounded-3xl p-8 md:p-10 w-full md:w-1/2"
+        className="bg-white shadow-2xl rounded-3xl p-8 md:p-10 w-full md:w-1/2"
       >
         <h2 className="text-4xl font-bold text-purple-700 mb-6 text-center md:text-left">
           Get in Touch
@@ -131,20 +153,34 @@ const Contact = () => {
 
           <button
             type="submit"
-                       className="w-full  cursor-pointer bg-gradient-to-r from-purple-600 to-blue-500 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300"
+            disabled={loading}
+            className={`w-full  cursor-pointer bg-gradient-to-r from-purple-600 to-blue-500 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300    ${loading ? "opacity-70  cursor-not-allowed" : "hover:scale-[1.02]"}`}
           >
-            {loading?<div className="flex gap-2 justify-center items-center" ><LoaderCircle className="animate-spin w-7 h-7 text-white" /><span>Loading</span></div>:<div className="flex gap-3 justify-center items-center" ><FiSend className="text-lg" /> Send Message</div>}
+            {loading ? <div className="flex gap-2 justify-center items-center" ><LoaderCircle className="animate-spin w-7 h-7 text-white" /><span>Loading</span></div> : <div className="flex gap-3 justify-center items-center" ><FiSend className="text-lg" /> Send Message</div>}
           </button>
+          {(message || error) && (
+            <div
+              className={`mt-6 p-4 rounded-xl text-white font-medium flex justify-between items-center transition-all duration-500 ${message
+                ? "bg-gradient-to-r from-green-500 to-emerald-600"
+                : "bg-gradient-to-r from-red-500 to-rose-600"
+                }`}
+            >
+              <span>
+                {message ? message : error}{" "}
+                <span className="text-sm opacity-80">({timer}s)</span>
+              </span>
+            </div>
+          )}
         </form>
 
-       
+
         <div className="mt-10 space-y-4 text-gray-700">
           <div className="flex items-center gap-3">
             <FiMail className="text-purple-600 text-xl" />
             <span>support@ardsuhail.com</span>
           </div>
-      
-         
+
+
         </div>
       </div>
     </div>
