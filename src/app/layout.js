@@ -81,6 +81,7 @@ export default function RootLayout({ children }) {
           <NavSidebar />
           <AdminSidebar />
           <Navbar />
+          
           {children}
           <Footer />
         </AppProvider>
