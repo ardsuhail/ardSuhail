@@ -513,16 +513,19 @@ const Projects = () => {
               Ready to Start Your Project?
             </h3>
             <p className="text-blue-100 text-xl mb-8 max-w-2xl mx-auto">
-              Let's collaborate to bring your ideas to life with modern technologies and innovative solutions.
+              Let&apos;s collaborate to bring your ideas to life with modern technologies and innovative solutions.
             </p>
+            <Link href={"/contact"} >
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
               <Code className="w-5 h-5" />
+
               Start a Project
               <ArrowRight className="w-5 h-5" />
             </motion.div>
+              </Link>
           </div>
         </motion.div>
       </div>

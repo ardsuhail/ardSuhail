@@ -116,14 +116,14 @@ const Contact = () => {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              Let's Connect
+              Let&apos;s Connect
             </span>
           </h1>
           
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-6"></div>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
+            Ready to bring your ideas to life? Let&apos;s discuss your project and create something amazing together.
           </p>
         </motion.div>
 
@@ -234,7 +234,7 @@ const Contact = () => {
           >
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Send a Message</h3>
-              <p className="text-gray-600">Fill out the form below and I'll get back to you as soon as possible.</p>
+              <p className="text-gray-600">Fill out the form below and I&apos;ll get back to you as soon as possible.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">

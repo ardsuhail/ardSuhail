@@ -353,7 +353,7 @@ const Skills = () => {
               <Star className="w-8 h-8 text-yellow-300" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-              Let's Build Something Amazing Together
+              Let&apos;s Build Something Amazing Together
             </h3>
             <p className="text-blue-100 text-lg mb-6 max-w-2xl mx-auto">
               Ready to turn your ideas into reality with modern technologies and best practices?

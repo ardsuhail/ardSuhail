@@ -111,7 +111,7 @@ const About = () => {
                                 className="space-y-6 mb-8"
                             >
                                 <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-                                    Hey <span className="text-2xl">👋</span> I'm{" "}
+                                    Hey <span className="text-2xl">👋</span> I&apos;m{" "}
                                     <strong className="text-blue-600 font-semibold">Suhail</strong> (@ardsuhail), a passionate{" "}
                                     <strong className="text-emerald-600">Full Stack Developer</strong> and{" "}
                                     <strong className="text-blue-500">AI Enthusiast</strong> crafting digital experiences that make an impact.
@@ -311,7 +311,7 @@ const About = () => {
                             Ready to Build Something Amazing?
                         </h2>
                         <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            Let's collaborate to turn your ideas into reality. I'm passionate about creating 
+                            Let&apos;s collaborate to turn your ideas into reality. I&apos;m passionate about creating 
                             digital solutions that drive results and make an impact.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

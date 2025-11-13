@@ -81,11 +81,9 @@ const Navbar = () => {
                 onClick={() => setSidebarOpen(true)}
                 className="lg:hidden p-2 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-gray-200/50 hover:shadow-lg transition-all duration-300"
               >
-                {sidebarOpen ? (
-                  <X className="w-5 h-5 text-gray-700" />
-                ) : (
+               
                   <Menu className="w-5 h-5 text-gray-700" />
-                )}
+                
               </button>
 
               {/* Logo */}

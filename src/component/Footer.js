@@ -30,7 +30,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-white/95 backdrop-blur-xl border-t border-gray-200/50 overflow-hidden">
+    <footer className="relative bg-white/95  shadow-md backdrop-blur-xl border-t border-gray-400/50 overflow-hidden">
       {/* Light Background Elements matching Navbar */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl opacity-50"></div>
@@ -65,7 +65,7 @@ export default function Footer() {
             </div>
             <p className="text-gray-600 leading-relaxed mb-6">
               Crafting digital experiences with modern technologies and innovative solutions. 
-              Let's build something amazing together.
+              Let&apos;s build something amazing together.
             </p>
             <div className="flex items-center gap-3 text-sm text-gray-500">
               <Shield className="w-4 h-4 text-green-500" />

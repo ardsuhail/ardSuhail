@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { SidebarClose } from "lucide-react";
 import { useAppContext } from "./Context";
-import { Home, Code, FileText, Mail, User, Sparkles, } from "lucide-react";
+import { Home, Code, FileText, Mail, User, Sparkles, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const NavSidebar = () => {
@@ -47,19 +47,19 @@ const NavSidebar = () => {
                 &lt;ArdSuhail/&gt;
               </span>
             </Link>
-            
+
             <button
               onClick={() => setSidebarOpen(false)}
               className="p-2 hover:bg-gray-100 rounded-xl transition-all duration-300 
                          hover:scale-110 hover:rotate-90 active:scale-95 group"
             >
-              <SidebarClose 
-                size={28} 
-                className="text-gray-600 group-hover:text-gray-900 transition-colors" 
+              <X
+                size={28}
+                className="text-gray-600 group-hover:text-gray-900 transition-colors"
               />
             </button>
           </div>
-          
+
           <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-4"></div>
         </div>
 
@@ -82,20 +82,20 @@ const NavSidebar = () => {
                     className={`group flex items-center gap-4 px-4 py-4 rounded-2xl font-semibold 
                                transition-all duration-300 relative overflow-hidden
                               ${isActive
-                                ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25"
-                                : "text-gray-700 hover:text-gray-900 hover:bg-white hover:shadow-lg hover:shadow-gray-200/50 border border-transparent hover:border-gray-100"
-                              }`}
+                        ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25"
+                        : "text-gray-700 hover:text-gray-900 hover:bg-white hover:shadow-lg hover:shadow-gray-200/50 border border-transparent hover:border-gray-100"
+                      }`}
                   >
                     {/* Animated Background Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 transition-opacity duration-300
                                    ${isActive ? "opacity-100" : "group-hover:opacity-5"}`} />
-                    
+
                     {/* Icon with Gradient */}
                     <div className={`relative z-10 transition-transform duration-300 
                                    ${isActive ? "text-white scale-110" : "text-gray-600 group-hover:text-cyan-600 group-hover:scale-110"}`}>
                       {icon}
                     </div>
-                    
+
                     {/* Label */}
                     <span className="relative z-10 transition-all duration-300">
                       {label}
@@ -118,7 +118,7 @@ const NavSidebar = () => {
         <div className="px-6 py-6 border-t border-gray-200/60">
           <div className="text-center">
             <p className="text-sm text-gray-500 font-medium">
-              Let's build something amazing
+              Let&apos;s build something amazing
             </p>
             <div className="flex justify-center gap-2 mt-3">
               <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
