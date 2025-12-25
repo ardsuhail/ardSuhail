@@ -16,7 +16,6 @@ import {
   SiJavascript, 
   SiExpress,
   SiMongodb,
-  SiTypescript,
   SiPostgresql
 } from "react-icons/si";
 import { 
@@ -119,14 +118,14 @@ const skillsData = {
         color: "from-green-500 to-green-700",
         features: ["NoSQL", "Mongoose ODM", "Aggregation"]
       },
-      {
-        name: "PostgreSQL",
-        icon: <SiPostgresql className="w-8 h-8 text-blue-700" />,
-        level: 80,
-        description: "Powerful open-source relational database system",
-        color: "from-blue-700 to-blue-900",
-        features: ["SQL", "Relations", "Performance"]
-      }
+      // {
+      //   name: "PostgreSQL",
+      //   icon: <SiPostgresql className="w-8 h-8 text-blue-700" />,
+      //   level: 80,
+      //   description: "Powerful open-source relational database system",
+      //   color: "from-blue-700 to-blue-900",
+      //   features: ["SQL", "Relations", "Performance"]
+      // }
     ]
   },
   specialized: {
@@ -142,22 +141,22 @@ const skillsData = {
         color: "from-green-600 to-green-800",
         features: ["Storefront API", "Custom Themes", "App Development"]
       },
-      {
-        name: "Python",
-        icon: <FaPython className="w-8 h-8 text-blue-700" />,
-        level: 82,
-        description: "Versatile programming for automation and backend development",
-        color: "from-blue-700 to-purple-600",
-        features: ["Scripting", "Automation", "Backend Logic"]
-      },
-      {
-        name: "Data Structures",
-        icon: <Code className="w-8 h-8 text-purple-600" />,
-        level: 85,
-        description: "Algorithmic thinking and efficient problem-solving",
-        color: "from-purple-600 to-pink-500",
-        features: ["Algorithms", "Optimization", "Problem Solving"]
-      },
+      // {
+      //   name: "Python",
+      //   icon: <FaPython className="w-8 h-8 text-blue-700" />,
+      //   level: 82,
+      //   description: "Versatile programming for automation and backend development",
+      //   color: "from-blue-700 to-purple-600",
+      //   features: ["Scripting", "Automation", "Backend Logic"]
+      // },
+      // {
+      //   name: "Data Structures",
+      //   icon: <Code className="w-8 h-8 text-purple-600" />,
+      //   level: 85,
+      //   description: "Algorithmic thinking and efficient problem-solving",
+      //   color: "from-purple-600 to-pink-500",
+      //   features: ["Algorithms", "Optimization", "Problem Solving"]
+      // },
       {
         name: "Git & Deployment",
         icon: <FaGitAlt className="w-8 h-8 text-orange-600" />,

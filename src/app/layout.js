@@ -38,7 +38,7 @@ export const metadata = {
     apple: '/favicon.png',
   },
   keywords:
-    "ardsuhail, Full-Stack Developer, MERN Stack, Next.js Developer, React.js Developer, Node.js Developer, MongoDB Developer, Shopify Expert, Shopify API, SEO Optimized Website, Tailwind CSS, Modern Web Developer, Portfolio Website, B.Tech Computer Science, Web Applications, High Performance Web Apps, Custom Shopify Store, Responsive Web Design, UI/UX Developer, Suhail ahmed",
+    "ardsuhail, Full-Stack Developer, MERN Stack, Next.js Developer, React.js Developer, Node.js Developer, MongoDB Developer, Shopify Expert, Shopify API, SEO Optimized Website, Tailwind CSS, Modern Web Developer, Portfolio Website, BCA(Bachelor of Computer Applications), Web Applications, High Performance Web Apps, Custom Shopify Store, Responsive Web Design, UI/UX Developer, Suhail ahmed",
   author: "ardsuhail",
   robots: "index, follow",
   openGraph: {

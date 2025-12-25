@@ -106,7 +106,7 @@ export default function Home() {
     { name: "MongoDB", category: "Database", level: "Advanced" },
     { name: "Tailwind CSS", category: "Styling", level: "Expert" },
     { name: "Express.js", category: "Backend", level: "Advanced" },
-    { name: "PostgreSQL", category: "Database", level: "Intermediate" }
+    // { name: "PostgreSQL", category: "Database", level: "Intermediate" }
   ];
 
   return (

@@ -8,7 +8,8 @@ const HireMeModal = ({ isOpen, onClose }) => {
   const platforms = [
     { name: "Upwork", link: "https://www.upwork.com/freelancers/~01b54162516864c607" },
     { name: "Fiverr", link: "https://www.fiverr.com/s/jjrx68m" },
-    { name: "LinkedIn", link: "https://www.linkedin.com/in/suhail-ahmed-566a60315/" },
+    { name: "LinkedIn", link: "https://www.linkedin.com/in/ardsuhail" },
+
   ];
 
   return (

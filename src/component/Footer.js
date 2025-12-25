@@ -134,7 +134,7 @@ export default function Footer() {
                 {
                   icon: <FaFacebook className="w-5 h-5" />,
                   name: "Facebook",
-                  href: "https://www.facebook.com/ardsuhail",
+                  href: "https://www.facebook.com/suhail.ahmad.918354",
                   color: "hover:text-blue-700",
                   bgColor: "hover:bg-blue-50"
                 }
@@ -187,12 +187,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:support@ardsuhail.com"
+                  href="mailto:ardsuhail@gmail.com"
                   className="group flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-all duration-300 py-2"
                 >
                   <Mail className="w-4 h-4 text-yellow-600" />
                   <span className="group-hover:translate-x-1 transition-transform duration-300">
-                    support@ardsuhail.com
+                    ardsuhail@gmail.com
                   </span>
                 </a>
               </li>

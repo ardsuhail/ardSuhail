@@ -118,7 +118,7 @@ const About = () => {
                                 </p>
 
                                 <p className="text-gray-600 leading-relaxed">
-                                    Currently pursuing my <strong className="text-blue-600">B.Tech in Computer Science (2024–2028)</strong>, 
+                                    Currently pursuing my <strong className="text-blue-600">BCA (2025–2028)</strong>, 
                                     I specialize in building <strong>high-performance, SEO-optimized web applications</strong> using modern 
                                     technologies like <strong>Next.js, React, Node.js, and MongoDB</strong>.
                                 </p>
