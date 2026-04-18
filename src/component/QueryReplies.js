@@ -9,7 +9,7 @@ const QueryReplies = ({ userEmail }) => {
 
   useEffect(() => {
     if (!userEmail) return;
-    fetch("/api/reply")
+    fetch("/api/admin/reply")
       .then((res) => res.json())
       .then((data) => {
         const userReplies = (data.replies || []).filter(

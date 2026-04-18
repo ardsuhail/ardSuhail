@@ -15,3 +15,18 @@ export async function getProjects() {
         return []
     }
 }
+
+// get single project by id
+export async function getProjectById(id) {
+    try {
+        await connectDB()
+        const project = await Project.findById(id)
+        if (!project) {
+            return null
+        }
+        return JSON.parse(JSON.stringify(project))
+    } catch (error) {
+        console.error("Error fetching project:", error);
+        return null
+    }
+}

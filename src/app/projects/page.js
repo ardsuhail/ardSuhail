@@ -1,3 +1,4 @@
+// src/app/projects/page.js
 import Projects from "@/component/Projects"
 import { getProjects } from "@/lib/getProjects"
 const Page=async()=>{

@@ -15,6 +15,12 @@ const nextConfig = {
         hostname: 'res.cloudinary.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'pub-2d2c2a5ee08a4562851348b30767ab78.r2.dev',
+        pathname: '**',
+      },
+      
     ],
   },
  turbopack: {
