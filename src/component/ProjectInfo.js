@@ -374,16 +374,21 @@ const ProjectInfo = ({ projectInfo }) => {
           >
             {/* CTA Buttons */}
             <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm flex flex-col gap-3">
-              <Link
-                href={project.proj_Link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all text-sm"
-              >
-                <Globe className="w-4 h-4" />
-                View Live Demo
-                <ExternalLink className="w-3.5 h-3.5" />
-              </Link>
+              {
+                project.proj_Link && (
+                  <Link
+                    href={project.proj_Link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all text-sm"
+                  >
+                    <Globe className="w-4 h-4" />
+                    View Live Demo
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </Link>
+                )
+              }
+
 
               {project.github_code_link && (
                 <Link
@@ -397,16 +402,31 @@ const ProjectInfo = ({ projectInfo }) => {
                 </Link>
               )}
 
-              {project.demoVideoUrl && (
-                <Link
-                  href={project.demoVideoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-red-50 text-red-600 font-semibold py-3 px-4 rounded-xl hover:bg-red-100 transition-all text-sm border border-red-100"
-                >
-                  <Play className="w-4 h-4" />
-                  Watch Demo Video
-                </Link>
+              {((project.demoVideoUrls && project.demoVideoUrls.length) || project.demoVideoUrl) && (
+                <div className="flex flex-col gap-3 w-full">
+                  {(project.demoVideoUrls && project.demoVideoUrls.length ? project.demoVideoUrls : project.demoVideoUrl ? [project.demoVideoUrl] : []).map((url, index) => {
+                    const isVideoFile = /\.(mp4|webm|ogg)(\?.*)?$/i.test(url)
+                    return (
+                      <div key={url || index} className="w-full">
+                        {isVideoFile ? (
+                          <video controls className="w-full rounded-2xl overflow-hidden border border-red-100 bg-black">
+                            <source src={url} />
+                          </video>
+                        ) : (
+                          <Link
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full flex items-center justify-center gap-2 bg-red-50 text-red-600 font-semibold py-3 px-4 rounded-xl hover:bg-red-100 transition-all text-sm border border-red-100"
+                          >
+                            <Play className="w-4 h-4" />
+                            Watch Demo Video {project.demoVideoUrls?.length ? `#${index + 1}` : ''}
+                          </Link>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
               )}
             </div>
 
@@ -432,7 +452,7 @@ const ProjectInfo = ({ projectInfo }) => {
               </div>
             </div>
 
-         
+
           </motion.div>
         </div>
       </div>

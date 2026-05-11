@@ -365,9 +365,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-indigo-600 to-sky-600 rounded-3xl p-8 md:p-12 text-white shadow-2xl"
+              className="bg-gradient-to-br from-indigo-600 to-sky-600 rounded-3xl p-8 md:p-12  shadow-2xl"
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-3xl text-white sm:text-4xl md:text-5xl font-bold mb-6">
                 Ready to Bring Your Idea to Life?
               </h2>
               <p className="text-lg sm:text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
@@ -382,7 +382,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/about"
-                  className="px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-indigo-600 transform hover:scale-105 transition-all duration-300"
+                  className="px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white  hover:text-indigo-700 transform hover:scale-105 transition-all duration-300"
                 >
                   Learn More About Me
                 </Link>

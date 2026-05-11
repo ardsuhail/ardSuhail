@@ -1,3 +1,4 @@
+export const revalidate = 360000; // Cache for 4 days (360000 seconds) - adjust as needed
 import connectDB from "@/db/connectDB";
 import Project from "@/model/Project";
 import { NextResponse } from "next/server";
@@ -63,6 +64,7 @@ export async function POST(req) {
         const teamSize = formData.get("teamSize") ? parseInt(formData.get("teamSize")) : 1
         const teamMembers = parseJSONField(formData.get("teamMembers"))
         const demoVideoUrl = formData.get("demoVideoUrl") || ""
+        const demoVideoUrls = parseJSONField(formData.get("demoVideoUrls"))
         
         // Challenges (JSON object)
         const challenges = parseJSONField(formData.get("challenges"))
@@ -75,7 +77,7 @@ export async function POST(req) {
         
         // 5. Validate required fields
         const validation = validateProjectData({
-            title, description, shortDescription, duration, proj_Link, category
+            title, description, shortDescription, duration, category
         });
         
         if (!validation.isValid) {
@@ -124,6 +126,13 @@ export async function POST(req) {
             isFeatured,
             order: formData.get("order") ? parseInt(formData.get("order")) : 0,
             demoVideoUrl,
+            demoVideoUrls: Array.isArray(demoVideoUrls)
+              ? demoVideoUrls
+              : demoVideoUrls
+                ? [demoVideoUrls]
+                : demoVideoUrl
+                  ? [demoVideoUrl]
+                  : [],
             testimonials: testimonials || []
         });
         
@@ -145,6 +154,8 @@ export async function POST(req) {
         }, { status: 500 });
     }
 }
+
+
 
 // GET - Fetch all projects (filtering ke saath)
 export async function GET(req) {

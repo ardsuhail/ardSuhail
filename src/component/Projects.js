@@ -515,6 +515,8 @@ const ProjectCard = ({ project }) => {
 
         {/* Hover CTA */}
         <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-400">
+        {
+        project?.proj_Link && (
           <Link
             href={project.proj_Link}
             target="_blank"
@@ -523,6 +525,8 @@ const ProjectCard = ({ project }) => {
           >
             <ExternalLink className="w-3.5 h-3.5" /> Live Demo
           </Link>
+        )
+        }  
           {project.github_code_link && (
             <Link
               href={project.github_code_link}
@@ -649,6 +653,7 @@ const ProjectCard = ({ project }) => {
 // ===== MAIN PROJECTS COMPONENT =====
 const Projects = ({ allProjects = [] }) => {
   const [filter, setFilter] = useState("all")
+  const [visibleProjects, setVisibleProjects] = useState(6) // Start with 6 projects
 
   // Get unique categories from projects
   const usedCategories = ["all", ...new Set(allProjects.map(p => p.category).filter(Boolean))]
@@ -656,6 +661,13 @@ const Projects = ({ allProjects = [] }) => {
   const filtered = filter === "all"
     ? allProjects
     : allProjects.filter(p => p.category === filter)
+
+  const displayedProjects = filtered.slice(0, visibleProjects)
+  const hasMore = visibleProjects < filtered.length
+
+  const loadMore = () => {
+    setVisibleProjects(prev => prev + 6)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -772,10 +784,28 @@ const Projects = ({ allProjects = [] }) => {
             className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
           >
             <AnimatePresence>
-              {filtered.map(project => (
+              {displayedProjects.map(project => (
                 <ProjectCard key={project._id} project={project} />
               ))}
             </AnimatePresence>
+          </motion.div>
+        )}
+
+        {/* Load More Button */}
+        {hasMore && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-center mt-12"
+          >
+            <motion.button
+              onClick={loadMore}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white border-2 border-blue-600 text-blue-600 font-bold px-8 py-3 rounded-2xl hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Load More Projects
+            </motion.button>
           </motion.div>
         )}
 

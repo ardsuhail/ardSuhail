@@ -132,6 +132,7 @@
 //   }
 // }
 // src/app/api/project/[id]/route.js
+export const revalidate = 360000; // Cache for 4 days (360000 seconds) - adjust as needed
 import Project from "@/model/Project";
 import connectDB from "@/db/connectDB";
 import { NextResponse } from "next/server";
@@ -347,6 +348,20 @@ export async function PATCH(req, { params }) {
                 updateData.gallery_images = JSON.parse(gallery_images);
             } catch (e) {
                 updateData.gallery_images = [];
+            }
+        }
+
+        const demoVideoUrls = formData.get("demoVideoUrls");
+        if (demoVideoUrls && demoVideoUrls !== "") {
+            try {
+                updateData.demoVideoUrls = JSON.parse(demoVideoUrls);
+            } catch (e) {
+                updateData.demoVideoUrls = [];
+            }
+        } else {
+            const singleDemoVideoUrl = formData.get("demoVideoUrl");
+            if (singleDemoVideoUrl && singleDemoVideoUrl !== "") {
+                updateData.demoVideoUrls = [singleDemoVideoUrl];
             }
         }
         

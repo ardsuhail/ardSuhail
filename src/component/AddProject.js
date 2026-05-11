@@ -247,7 +247,6 @@ const AddProjectForm = () => {
     difficulty: 'intermediate',
     isFeatured: false,
     order: 0,
-    demoVideoUrl: '',
     startDate: '',
     endDate: '',
     teamSize: 1,
@@ -262,11 +261,19 @@ const AddProjectForm = () => {
   const [imageFile, setImageFile] = useState(null)
   const [preview, setPreview] = useState('')
   const [galleryImages, setGalleryImages] = useState([])
+  const [galleryUploading, setGalleryUploading] = useState(false)
+  const [videoUrls, setVideoUrls] = useState([])
+  const [newVideoUrl, setNewVideoUrl] = useState('')
+  const [videoUploading, setVideoUploading] = useState(false)
 
   const [showTechSelector, setShowTechSelector] = useState(false)
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [toast, setToast] = useState(null)
+
+  // Limit gallery images to prevent memory issues
+  const MAX_GALLERY_IMAGES = 10
+  const MAX_VIDEO_URLS = 5
 
   // Toast helper
   const showToast = (msg, type = 'success') => {
@@ -295,7 +302,6 @@ const AddProjectForm = () => {
             difficulty: p.difficulty || 'intermediate',
             isFeatured: p.isFeatured || false,
             order: p.order || 0,
-            demoVideoUrl: p.demoVideoUrl || '',
             startDate: p.startDate ? p.startDate.slice(0, 10) : '',
             endDate: p.endDate ? p.endDate.slice(0, 10) : '',
             teamSize: p.teamSize || 1,
@@ -310,6 +316,16 @@ const AddProjectForm = () => {
             keywords: p.seo?.keywords?.join(', ') || ''
           })
           if (p.project_image?.url) setPreview(p.project_image.url)
+          if (Array.isArray(p.gallery_images)) {
+            setGalleryImages(p.gallery_images)
+          }
+          setVideoUrls(
+            Array.isArray(p.demoVideoUrls)
+              ? p.demoVideoUrls
+              : p.demoVideoUrl
+                ? [p.demoVideoUrl]
+                : []
+          )
         }
       })
       .finally(() => setLoading(false))
@@ -325,6 +341,96 @@ const AddProjectForm = () => {
     if (!file) return
     setImageFile(file)
     setPreview(URL.createObjectURL(file))
+  }
+
+  const handleGalleryFilesChange = async (e) => {
+    const files = Array.from(e.target.files || [])
+    if (!files.length) return
+
+    // Check total limit
+    const currentCount = galleryImages.length
+    const newCount = files.length
+    if (currentCount + newCount > MAX_GALLERY_IMAGES) {
+      showToast(`Maximum ${MAX_GALLERY_IMAGES} gallery images allowed. You can add ${MAX_GALLERY_IMAGES - currentCount} more.`, 'error')
+      return
+    }
+
+    setGalleryUploading(true)
+    const uploadedImages = []
+
+    try {
+      for (const file of files) {
+        const url = await uploadImage(file)
+        if (url) {
+          uploadedImages.push({
+            url,
+            public_id: url.split('/').pop()
+          })
+        }
+      }
+
+      if (uploadedImages.length) {
+        setGalleryImages(prev => [...prev, ...uploadedImages])
+        showToast(`${uploadedImages.length} gallery image(s) added`)
+      }
+    } catch (err) {
+      console.error(err)
+      showToast('Gallery upload failed. Please try again.', 'error')
+    } finally {
+      setGalleryUploading(false)
+      e.target.value = ''
+    }
+  }
+
+  const removeGalleryImage = (index) => {
+    setGalleryImages(prev => prev.filter((_, idx) => idx !== index))
+  }
+
+  const handleVideoFilesChange = async (e) => {
+    const files = Array.from(e.target.files || [])
+    if (!files.length) return
+
+    setVideoUploading(true)
+    const uploadedVideos = []
+
+    try {
+      for (const file of files) {
+        const url = await uploadImage(file)
+        if (url) {
+          uploadedVideos.push(url)
+        }
+      }
+
+      if (uploadedVideos.length) {
+        setVideoUrls(prev => [...prev, ...uploadedVideos])
+        showToast(`${uploadedVideos.length} video(s) added`)
+      }
+    } catch (err) {
+      console.error(err)
+      showToast('Video upload failed. Please try again.', 'error')
+    } finally {
+      setVideoUploading(false)
+      e.target.value = ''
+    }
+  }
+
+  const addVideoUrl = () => {
+    const trimmed = newVideoUrl.trim()
+    if (!trimmed) return
+
+    // Check limit
+    if (videoUrls.length >= MAX_VIDEO_URLS) {
+      showToast(`Maximum ${MAX_VIDEO_URLS} video links allowed.`, 'error')
+      return
+    }
+
+    setVideoUrls(prev => [...prev, trimmed])
+    setNewVideoUrl('')
+    showToast('Video link added')
+  }
+
+  const removeVideoUrl = (index) => {
+    setVideoUrls(prev => prev.filter((_, idx) => idx !== index))
   }
 
   // Feature list helpers
@@ -375,6 +481,13 @@ const AddProjectForm = () => {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
       fd.append('imageUrl', finalImageUrl)
+      fd.append('gallery_images', JSON.stringify(
+        galleryImages.map(img => ({
+          url: img.url,
+          public_id: img.public_id || img.url.split('/').pop()
+        }))
+      ))
+      fd.append('demoVideoUrls', JSON.stringify(videoUrls))
       fd.append('techStack', JSON.stringify(techStack))
       fd.append('features', JSON.stringify(features.filter(f => f.trim())))
       fd.append('challenges', JSON.stringify(challenges))
@@ -534,7 +647,7 @@ const AddProjectForm = () => {
                   onChange={handleChange}
                   placeholder="https://your-project.vercel.app"
                   className={`${inputCls} pl-10`}
-                  required
+                  
                 />
               </div>
             </Field>
@@ -548,20 +661,6 @@ const AddProjectForm = () => {
                   value={form.github_code_link}
                   onChange={handleChange}
                   placeholder="https://github.com/username/repo"
-                  className={`${inputCls} pl-10`}
-                />
-              </div>
-            </Field>
-
-            <Field label="Demo Video URL (YouTube/Vimeo)">
-              <div className="relative">
-                <Video className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
-                <input
-                  type="url"
-                  name="demoVideoUrl"
-                  value={form.demoVideoUrl}
-                  onChange={handleChange}
-                  placeholder="https://youtube.com/watch?v=..."
                   className={`${inputCls} pl-10`}
                 />
               </div>
@@ -588,6 +687,76 @@ const AddProjectForm = () => {
               <span className="text-xs text-gray-400 mt-1">PNG, JPG, WebP supported</span>
               <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
             </label>
+          </Section>
+
+          <Section title="Gallery Images" icon={ImageIcon}>
+            <div className="flex flex-wrap gap-3">
+              {galleryImages.map((img, i) => (
+                <div key={i} className="relative w-28 h-28 rounded-2xl overflow-hidden border border-gray-200 bg-gray-50">
+                  <Image fill src={img.url} alt={`Gallery ${i + 1}`} className="object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => removeGalleryImage(i)}
+                    className="absolute top-2 right-2 bg-white/90 text-red-500 rounded-full p-1 shadow-sm hover:bg-white"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <label className="flex flex-col items-center justify-center border-2 border-dashed border-purple-200 rounded-xl p-8 cursor-pointer hover:border-purple-400 hover:bg-purple-50/50 transition-all">
+              <Upload className="w-8 h-8 text-purple-400 mb-2" />
+              <span className="text-sm font-medium text-purple-600">Upload gallery images</span>
+              <span className="text-xs text-gray-400 mt-1">
+                {galleryUploading ? 'Uploading...' : 'Select one or more images'}
+              </span>
+              <input type="file" accept="image/*" multiple onChange={handleGalleryFilesChange} className="hidden" />
+            </label>
+            <p className="text-xs text-gray-400">Recommended: 3–6 images. You can remove any image before saving.</p>
+          </Section>
+
+          <Section title="Project Videos" icon={Video}>
+            <div className="flex flex-col gap-3">
+              {videoUrls.map((url, i) => (
+                <div key={i} className="flex items-center justify-between gap-3 p-3 rounded-2xl border border-gray-200 bg-gray-50">
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-gray-800 truncate">{url}</p>
+                    <p className="text-xs text-gray-500">Video {i + 1}</p>
+                  </div>
+                  <button type="button" onClick={() => removeVideoUrl(i)} className="text-red-500 hover:text-red-700">
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <label className="flex flex-col items-center justify-center border-2 border-dashed border-purple-200 rounded-xl p-8 cursor-pointer hover:border-purple-400 hover:bg-purple-50/50 transition-all">
+              <Upload className="w-8 h-8 text-purple-400 mb-2" />
+              <span className="text-sm font-medium text-purple-600">Upload video files</span>
+              <span className="text-xs text-gray-400 mt-1">
+                {videoUploading ? 'Uploading...' : 'Select one or more videos'}
+              </span>
+              <input type="file" accept="video/*" multiple onChange={handleVideoFilesChange} className="hidden" />
+            </label>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input
+                type="url"
+                value={newVideoUrl}
+                onChange={e => setNewVideoUrl(e.target.value)}
+                placeholder="Add video URL (YouTube/Vimeo)"
+                className={inputCls}
+              />
+              <button
+                type="button"
+                onClick={addVideoUrl}
+                className="px-4 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-all"
+              >
+                Add Link
+              </button>
+            </div>
+            <p className="text-xs text-gray-400">You can upload local video files or add external video links.</p>
           </Section>
 
           {/* === TECH STACK === */}
@@ -793,7 +962,7 @@ const AddProjectForm = () => {
           {/* === SUBMIT === */}
           <button
             type="submit"
-            disabled={saving}
+            disabled={saving || galleryUploading}
             className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-base rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {saving ? (

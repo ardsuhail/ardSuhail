@@ -22,7 +22,7 @@ const ProjectSchema = new mongoose.Schema({
     },
     proj_Link: {
         type: String,
-        required: true
+        // required: true
     },
     github_code_link: {
         type: String,
@@ -134,6 +134,9 @@ const ProjectSchema = new mongoose.Schema({
     demoVideoUrl: {
         type: String  // YouTube or Vimeo link
     },
+    demoVideoUrls: [{
+        type: String
+    }],
     
     // 15. Testimonials (if client project)
     testimonials: [{
