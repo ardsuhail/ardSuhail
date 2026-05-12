@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 
 // Validate required fields (naye schema ke according)
 const validateProjectData = (data) => {
-    const required = ['title', 'description', 'shortDescription', 'duration', 'proj_Link', 'category'];
+    const required = ['title', 'description', 'shortDescription', 'duration', 'category'];
     const missing = required.filter(field => !data[field]);
     
     if (missing.length > 0) {
