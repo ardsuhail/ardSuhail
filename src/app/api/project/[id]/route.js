@@ -259,7 +259,7 @@ export async function PATCH(req, { params }) {
         
         // Simple fields (text inputs)
         const simpleFields = ['title', 'description', 'shortDescription', 'duration', 
-                              'proj_Link', 'github_code_link', 'category', 'status', 
+                              'proj_Link', 'github_code_link', 'status', 
                               'difficulty', 'demoVideoUrl'];
         
         simpleFields.forEach(field => {
@@ -268,6 +268,18 @@ export async function PATCH(req, { params }) {
                 updateData[field] = value;
             }
         });
+        
+        // Handle category array
+        const category = formData.getAll("category");
+        if (category && category.length > 0) {
+            updateData.category = category;
+        }
+        
+        // Handle otherCategory
+        const otherCategory = formData.get("otherCategory");
+        if (otherCategory !== null && otherCategory !== undefined && otherCategory !== "") {
+            updateData.otherCategory = otherCategory;
+        }
         
         // Boolean fields
         const isFeatured = formData.get("isFeatured");

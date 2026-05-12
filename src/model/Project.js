@@ -68,11 +68,12 @@ const ProjectSchema = new mongoose.Schema({
     },
     
     // 6. Category/Type
-    category: {
+    category: [{
         type: String,
-        enum: ['fullstack', 'frontend', 'backend', 'ecommerce', 'mobile', 'ai-ml', 'other'],
-        required: true,
-        default: 'other'
+        enum: ['fullstack', 'frontend', 'backend', 'ecommerce', 'mobile', 'saas', 'ai-ml', 'other']
+    }],
+    otherCategory: {
+        type: String  // Custom category when 'other' is selected
     },
     
     // 7. Difficulty Level

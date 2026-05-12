@@ -1,4 +1,4 @@
-// export const revalidate = 360000; // Cache for 4 days (360000 seconds) - adjust as needed
+export const revalidate = 360000; // Cache for 4 days (360000 seconds) - adjust as needed
 import connectDB from "@/db/connectDB";
 import Project from "@/model/Project";
 import { NextResponse } from "next/server";
@@ -48,7 +48,7 @@ export async function POST(req) {
         const proj_Link = formData.get("proj_Link")
         const github_code_link = formData.get("github_code_link") || ""
         const imageUrl = formData.get("imageUrl")
-        const category = formData.get("category")
+        const category = formData.getAll("category")
         
         // 4. Extract JSON/Array fields
         const techStack = parseJSONField(formData.get("techStack"))

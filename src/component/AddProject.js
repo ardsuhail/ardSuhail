@@ -242,7 +242,8 @@ const AddProjectForm = () => {
     duration: '',
     proj_Link: '',
     github_code_link: '',
-    category: 'other',
+    category: [],
+    otherCategory: '',
     status: 'completed',
     difficulty: 'intermediate',
     isFeatured: false,
@@ -297,7 +298,8 @@ const AddProjectForm = () => {
             duration: p.duration || '',
             proj_Link: p.proj_Link || '',
             github_code_link: p.github_code_link || '',
-            category: p.category || 'other',
+            category: Array.isArray(p.category) ? p.category : (p.category ? [p.category] : []),
+            otherCategory: p.otherCategory || '',
             status: p.status || 'completed',
             difficulty: p.difficulty || 'intermediate',
             isFeatured: p.isFeatured || false,
@@ -330,10 +332,27 @@ const AddProjectForm = () => {
       })
       .finally(() => setLoading(false))
   }, [projectID])
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
+  }
+  const handleCategoryChange = (categoryValue) => {
+    const currentCategories = form.category || []
+    let newCategories
+
+    if (currentCategories.includes(categoryValue)) {
+      // Remove category
+      newCategories = currentCategories.filter(c => c !== categoryValue)
+    } else {
+      // Add category
+      newCategories = [...currentCategories, categoryValue]
+    }
+
+    setForm(prev => ({ ...prev, category: newCategories }))
+  }
+
+  const handleOtherCategoryChange = (e) => {
+    setForm(prev => ({ ...prev, otherCategory: e.target.value }))
   }
 
   const handleFileChange = (e) => {
@@ -479,7 +498,14 @@ const AddProjectForm = () => {
       const url = projectID ? `/api/project/${projectID}` : '/api/project'
 
       const fd = new FormData()
-      Object.entries(form).forEach(([k, v]) => fd.append(k, v))
+      Object.entries(form).forEach(([k, v]) => {
+        if (k === 'category') {
+          // Handle category array
+          v.forEach(cat => fd.append('category', cat))
+        } else {
+          fd.append(k, v)
+        }
+      })
       fd.append('imageUrl', finalImageUrl)
       fd.append('gallery_images', JSON.stringify(
         galleryImages.map(img => ({
@@ -598,11 +624,28 @@ const AddProjectForm = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Field label="Category" required>
-                <select name="category" value={form.category} onChange={handleChange} className={selectCls} required>
+                <div className="space-y-2">
                   {CATEGORIES.map(c => (
-                    <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>
+                    <label key={c} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={(form.category || []).includes(c)}
+                        onChange={() => handleCategoryChange(c)}
+                        className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
+                      />
+                      <span className="text-sm text-gray-700 capitalize">{c}</span>
+                    </label>
                   ))}
-                </select>
+                </div>
+                {(form.category || []).includes('other') && (
+                  <input
+                    type="text"
+                    value={form.otherCategory}
+                    onChange={handleOtherCategoryChange}
+                    placeholder="Specify other category..."
+                    className={`${inputCls} mt-2`}
+                  />
+                )}
               </Field>
 
               <Field label="Duration" required>
