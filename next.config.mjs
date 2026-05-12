@@ -7,8 +7,6 @@ const __dirname = dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
      images: {
-    domains: ['res.cloudinary.com'],
-    // Ya phir better approach - remotePatterns use karo
     remotePatterns: [
       {
         protocol: 'https',
