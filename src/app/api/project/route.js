@@ -1,4 +1,4 @@
-export const revalidate = 360000; // Cache for 4 days (360000 seconds) - adjust as needed
+// export const revalidate = 360000; // Cache for 4 days (360000 seconds) - adjust as needed
 import connectDB from "@/db/connectDB";
 import Project from "@/model/Project";
 import { NextResponse } from "next/server";
