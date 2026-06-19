@@ -187,12 +187,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:ardsuhail@gmail.com"
+                  href="mailto:ardsuhail47@gmail.com"
                   className="group flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-all duration-300 py-2"
                 >
                   <Mail className="w-4 h-4 text-yellow-600" />
                   <span className="group-hover:translate-x-1 transition-transform duration-300">
-                    ardsuhail@gmail.com
+                    ardsuhail47@gmail.com
                   </span>
                 </a>
               </li>

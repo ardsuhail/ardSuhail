@@ -2,16 +2,15 @@
 
 import About from "@/component/About";
 export const metadata = {
-  title: "About ArdSuhail | Full Stack Web Developer & Shopify Expert",
+  title: "About ArdSuhail | Full Stack Web Developer",
   description:
-    "I'm Suhail (@ardsuhail), a Full Stack Web Developer skilled in Next.js, React.js, Node.js, MongoDB, and Shopify API integrations. I build SEO-optimized, high-performance, and modern websites that stand out on Google.",
+    "I'm Suhail (@ardsuhail), a Full Stack Web Developer skilled in Next.js, React.js, Node.js, MongoDB, and  API integrations. I build SEO-optimized, high-performance, and modern websites that stand out on Google.",
  keywords: [
   "Suhail",
   "@ardsuhail",
   "Full Stack Web Developer",
   "Next.js Developer",
   "React.js Developer",
-  "Shopify Expert",
   "MERN Stack Developer",
   "Frontend Developer India",
   "Backend Developer India",
@@ -24,7 +23,7 @@ export const metadata = {
 ],
 
   openGraph: {
-    title: "About ArdSuhail | Full Stack Web Developer & Shopify Expert",
+    title: "About ArdSuhail | Full Stack Web Developer",
     description:
       "Know more about ArdSuhail (@ardsuhail) — a passionate Full Stack Web Developer and Shopify Store Creator skilled in Next.js, React, and Tailwind CSS.",
     url: "https://ardsuhail.com/about",
@@ -42,7 +41,7 @@ export const metadata = {
   },
    twitter: {
     card: "summary_large_image",
-    title: "About ardsuhail | Full-Stack Developer & Shopify Expert",
+    title: "About ardsuhail | Full-Stack Developer ",
     description:
       "Check out ardsuhail's About page – learn about full-stack development, Next.js, React.js, Shopify API integrations, and modern web solutions.",
     images: ["/og-image.png"],

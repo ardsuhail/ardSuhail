@@ -19,7 +19,7 @@ const About = () => {
         { name: "Node.js", level: "Advanced", color: "bg-green-600 text-white" },
         { name: "Tailwind CSS", level: "Expert", color: "bg-cyan-500 text-white" },
         { name: "MongoDB", level: "Advanced", color: "bg-green-700 text-white" },
-        { name: "Shopify API", level: "Advanced", color: "bg-green-500 text-white" },
+        // { name: "Shopify API", level: "Advanced", color: "bg-green-500 text-white" },
         { name: "TypeScript", level: "Intermediate", color: "bg-blue-700 text-white" },
         { name: "Express.js", level: "Advanced", color: "bg-gray-600 text-white" }
     ];
@@ -123,10 +123,10 @@ const About = () => {
                                     technologies like <strong>Next.js, React, Node.js, and MongoDB</strong>.
                                 </p>
 
-                                <p className="text-gray-600 leading-relaxed">
+                                {/* <p className="text-gray-600 leading-relaxed">
                                     I have extensive experience in <strong>Shopify API integrations</strong>, creating custom eCommerce 
                                     solutions that combine beautiful design with powerful functionality and superior SEO performance.
-                                </p>
+                                </p> */}
                             </motion.div>
 
                             {/* Stats Grid */}
@@ -300,14 +300,14 @@ const About = () => {
             </section>
 
             {/* Final CTA Section */}
-            <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-900 text-white">
+            <section className="py-20 bg-gradient-to-br from-slate-900 to-blue-900 ">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
                             Ready to Build Something Amazing?
                         </h2>
                         <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -317,13 +317,18 @@ const About = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/contact"
-                                className="px-8 py-4 bg-white text-blue-900 font-semibold rounded-2xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                className="px-8 py-4 bg-white  text-blue-900 font-semibold rounded-2xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                style={{
+                                    color:"#1e3a8a",
+                                  
+                                }}
                             >
                                 Start a Conversation
                             </Link>
                             <Link
                                 href="/projects"
                                 className="px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300"
+                               
                             >
                                 See My Work
                             </Link>

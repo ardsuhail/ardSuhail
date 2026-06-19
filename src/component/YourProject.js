@@ -301,10 +301,11 @@ import {
   SiTailwindcss, SiNextdotjs, SiJavascript, SiMongodb, SiExpress,
   SiTypescript, SiPostgresql, SiMysql, SiRedis, SiFirebase,
   SiSupabase, SiPrisma, SiGraphql, SiVercel, SiNetlify, SiSanity,
-  SiStripe, SiCloudflare, SiSvelte, SiNuxtdotjs, SiDjango, SiFlask,
+  SiStripe, SiCloudflare, SiSvelte, SiDjango, SiFlask,
   SiSpring, SiLaravel, SiRust, SiGo, SiKubernetes, SiElasticsearch, SiShadcnui
 } from "react-icons/si"
-
+import { SiNuxt } from "react-icons/si"
+// SiNuxtdotjs
 // ===== ICON MAP =====
 const iconMap = {
   FaReact: { c: FaReact, col: "#61DAFB" }, FaPython: { c: FaPython, col: "#3776AB" },
@@ -324,7 +325,7 @@ const iconMap = {
   SiGraphql: { c: SiGraphql, col: "#E10098" }, SiVercel: { c: SiVercel, col: "#aaa" },
   SiNetlify: { c: SiNetlify, col: "#00C7B7" }, SiSanity: { c: SiSanity, col: "#F03E2F" },
   SiStripe: { c: SiStripe, col: "#008CDD" }, SiCloudflare: { c: SiCloudflare, col: "#F38020" },
-  SiSvelte: { c: SiSvelte, col: "#FF3E00" }, SiNuxtdotjs: { c: SiNuxtdotjs, col: "#00C58E" },
+  SiSvelte: { c: SiSvelte, col: "#FF3E00" }, SiNuxt: { c: SiNuxt, col: "#00C58E" },
   SiDjango: { c: SiDjango, col: "#092E20" }, SiFlask: { c: SiFlask, col: "#aaa" },
   SiSpring: { c: SiSpring, col: "#6DB33F" }, SiLaravel: { c: SiLaravel, col: "#FF2D20" },
   SiRust: { c: SiRust, col: "#aaa" }, SiGo: { c: SiGo, col: "#00ADD8" },
@@ -627,9 +628,9 @@ const YourProjectContent = () => {
 
           {/* Category Filter */}
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-            {usedCategories.map(cat => (
+            {usedCategories.map((cat,i) => (
               <button
-                key={cat}
+                key={i}
                 onClick={() => setFilter(cat)}
                 className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex-shrink-0 ${
                   filter === cat

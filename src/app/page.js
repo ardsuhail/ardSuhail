@@ -71,8 +71,8 @@ export default function Home() {
   };
 
   const stats = [
-    { icon: <Award className="w-6 h-6" />, number: "10+", label: "Projects Delivered" },
-    { icon: <Clock className="w-6 h-6" />, number: "2+", label: "Years Experience" },
+    { icon: <Award className="w-6 h-6" />, number: "10+", label: "Projects " },
+    { icon: <Clock className="w-6 h-6" />, number: "2+", label: "Years coding" },
     { icon: <TrendingUp className="w-6 h-6" />, number: "100%", label: "Client Satisfaction" },
     { icon: <CheckCircle className="w-6 h-6" />, number: "50K+", label: "Lines of Code" }
   ];

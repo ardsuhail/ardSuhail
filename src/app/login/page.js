@@ -71,7 +71,7 @@ const Page = () => {
                         value={form.email}
                         name="email"
                         onChange={handleChange}
-                        placeholder="Enter your email"
+                        placeholder="email"
                         className="w-full px-4 py-2 rounded-xl bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-transparent"
                     />
                     <div className="relative w-full">
@@ -81,7 +81,7 @@ const Page = () => {
                             value={form.password}
                             name="password"
                             onChange={handleChange}
-                            placeholder="Enter your password"
+                            placeholder="password"
                             className="w-full pr-12 px-4 py-2 rounded-xl bg-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-transparent"
                         />
 
@@ -103,7 +103,7 @@ const Page = () => {
                     </button>
                     {message && <p className="mt-3 text-green-600 text-sm">{message}</p>}
                     {error && <p className="mt-3  text-red-600 text-sm">{error}</p>}
-                    <p className="mt-4 text-center text-sm text-gray-300">
+                    {/* <p className="mt-4 text-center text-sm text-gray-300">
                         Forgot your password?{" "}
                         <Link
                             href="/admin/forgot-password"
@@ -111,7 +111,7 @@ const Page = () => {
                         >
                             Reset it here
                         </Link>
-                    </p>
+                    </p> */}
                 </form>
             </div>
         </div>

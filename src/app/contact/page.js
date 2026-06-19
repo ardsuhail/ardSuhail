@@ -169,7 +169,7 @@ const Contact = () => {
                   {
                     icon: <Mail className="w-6 h-6" />,
                     title: "Email Address",
-                    content: "ardsuhail@gmail.com",
+                    content: "ardsuhail47@gmail.com",
                     description: "I'll respond within 24 hours"
                   },
                   {

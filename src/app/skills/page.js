@@ -134,14 +134,14 @@ const skillsData = {
     icon: <Zap className="w-6 h-6" />,
     description: "Advanced technologies and platforms for specific use cases",
     skills: [
-      {
-        name: "Shopify",
-        icon: <FaShopify className="w-8 h-8 text-green-600" />,
-        level: 92,
-        description: "Custom store development and API integrations",
-        color: "from-green-600 to-green-800",
-        features: ["Storefront API", "Custom Themes", "App Development"]
-      },
+      // {
+      //   name: "Shopify",
+      //   icon: <FaShopify className="w-8 h-8 text-green-600" />,
+      //   level: 92,
+      //   description: "Custom store development and API integrations",
+      //   color: "from-green-600 to-green-800",
+      //   features: ["Storefront API", "Custom Themes", "App Development"]
+      // },
       // {
       //   name: "Python",
       //   icon: <FaPython className="w-8 h-8 text-blue-700" />,

@@ -29,22 +29,22 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL('https://www.ardsuhail.com'),
-  title: "ardsuhail | Full-Stack MERN & Next.js Developer | Shopify Customization Expert",
+  title: "ardsuhail | Full-Stack MERN & Next.js Developer | Customization Expert",
   description:
-    "Discover ardsuhail (@ardsuhail) – a skilled Full-Stack Web Developer specializing in Next.js, React.js, Node.js, MongoDB, and Shopify API integrations. I build high-performance, SEO-friendly websites, custom Shopify stores, and modern digital solutions that rank on Google.",
+    "Discover ardsuhail (@ardsuhail) – a skilled Full-Stack Web Developer specializing in Next.js, React.js, Node.js, MongoDB, and   API integrations. I build high-performance, SEO-friendly websites, custom   stores, and modern digital solutions that rank on Google.",
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
   keywords:
-    "ardsuhail, Full-Stack Developer, MERN Stack, Next.js Developer, React.js Developer, Node.js Developer, MongoDB Developer, Shopify Expert, Shopify API, SEO Optimized Website, Tailwind CSS, Modern Web Developer, Portfolio Website, BCA(Bachelor of Computer Applications), Web Applications, High Performance Web Apps, Custom Shopify Store, Responsive Web Design, UI/UX Developer, Suhail ahmed",
+    "ardsuhail, Full-Stack Developer, MERN Stack, Next.js Developer, React.js Developer, Node.js Developer, MongoDB Developer,   Expert,   API, SEO Optimized Website, Tailwind CSS, Modern Web Developer, Portfolio Website, BCA(Bachelor of Computer Applications), Web Applications, High Performance Web Apps, Custom   Store, Responsive Web Design, UI/UX Developer, Suhail ahmed",
   author: "ardsuhail",
   robots: "index, follow",
   openGraph: {
     title: "ardsuhail | Full-Stack MERN & Next.js Developer",
     description:
-      "Explore ardsuhail's portfolio and projects – MERN stack apps, Next.js websites, custom Shopify stores, and innovative digital solutions built with SEO, speed, and modern UI/UX in mind.",
+      "Explore ardsuhail's portfolio and projects – MERN stack apps, Next.js websites, custom   stores, and innovative digital solutions built with SEO, speed, and modern UI/UX in mind.",
     url: "https://ardsuhail.com", // replace with your actual portfolio URL
     siteName: "ardsuhail Portfolio",
     images: [
@@ -62,7 +62,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "ardsuhail | Full-Stack MERN & Next.js Developer",
     description:
-      "Check out ardsuhail's portfolio – MERN, Next.js, React.js projects, custom Shopify stores, and modern web solutions that are SEO-friendly and high-performance.",
+      "Check out ardsuhail's portfolio – MERN, Next.js, React.js projects, custom   stores, and modern web solutions that are SEO-friendly and high-performance.",
     images: ["/og-image.png"],
     site: "@ardsuhail",
     creator: "@ardsuhail",

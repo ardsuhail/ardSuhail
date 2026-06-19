@@ -11,7 +11,7 @@ import {
   SiTailwindcss, SiNextdotjs, SiJavascript, SiMongodb, SiExpress,
   SiTypescript, SiPostgresql, SiMysql, SiRedis, SiFirebase,
   SiSupabase, SiPrisma, SiGraphql, SiVercel, SiNetlify, SiSanity,
-  SiStripe, SiCloudflare, SiSvelte, SiNuxtdotjs, SiDjango, SiFlask,
+  SiStripe, SiCloudflare, SiSvelte, SiNuxt, SiDjango, SiFlask,
   SiSpring, SiLaravel, SiRust, SiGo, SiKubernetes, SiElasticsearch, SiShadcnui
 } from 'react-icons/si'
 import {
@@ -24,7 +24,7 @@ import {
 const iconMap = {
   FaReact: { component: FaReact, color: "#61DAFB" },
   FaPython: { component: FaPython, color: "#3776AB" },
-  FaShopify: { component: FaShopify, color: "#96BF48" },
+  // FaShopify: { component: FaShopify, color: "#96BF48" },
   FaHtml5: { component: FaHtml5, color: "#E34F26" },
   FaCss3Alt: { component: FaCss3Alt, color: "#1572B6" },
   FaNodeJs: { component: FaNodeJs, color: "#339933" },
@@ -57,7 +57,7 @@ const iconMap = {
   SiStripe: { component: SiStripe, color: "#008CDD" },
   SiCloudflare: { component: SiCloudflare, color: "#F38020" },
   SiSvelte: { component: SiSvelte, color: "#FF3E00" },
-  SiNuxtdotjs: { component: SiNuxtdotjs, color: "#00C58E" },
+  SiNuxt: { component: SiNuxt, color: "#00C58E" },
   SiDjango: { component: SiDjango, color: "#092E20" },
   SiFlask: { component: SiFlask, color: "#111111" },
   SiSpring: { component: SiSpring, color: "#6DB33F" },

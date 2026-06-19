@@ -21,8 +21,8 @@ import {
   SiExpress, SiTypescript, SiPostgresql, SiMysql, SiRedis,
   SiFirebase, SiSupabase, SiPrisma, SiGraphql, SiVercel,
   SiNetlify, SiSanity, SiStripe, SiCloudflare, SiSvelte,
-  SiNuxtdotjs, SiDjango, SiFlask, SiSpring, SiLaravel,
-  SiRust, SiGo, SiKubernetes, SiElasticsearch, SiShadcnui
+   SiDjango, SiFlask, SiSpring, SiLaravel,
+  SiRust, SiGo, SiKubernetes, SiElasticsearch, SiShadcnui,SiNuxt
 } from 'react-icons/si'
 
 import { UploadFile } from '@/lib/UploadFile'
@@ -37,7 +37,7 @@ export const TECH_OPTIONS = [
   { name: 'Vue.js', icon: 'FaVuejs', component: FaVuejs, color: '#4FC08D', category: 'Frontend' },
   { name: 'Angular', icon: 'FaAngular', component: FaAngular, color: '#DD0031', category: 'Frontend' },
   { name: 'Svelte', icon: 'SiSvelte', component: SiSvelte, color: '#FF3E00', category: 'Frontend' },
-  { name: 'Nuxt.js', icon: 'SiNuxtdotjs', component: SiNuxtdotjs, color: '#00C58E', category: 'Frontend' },
+  { name: 'Nuxt.js', icon: 'SiNuxt', component: SiNuxt, color: '#00C58E', category: 'Frontend' },
   { name: 'HTML5', icon: 'FaHtml5', component: FaHtml5, color: '#E34F26', category: 'Frontend' },
   { name: 'CSS3', icon: 'FaCss3Alt', component: FaCss3Alt, color: '#1572B6', category: 'Frontend' },
   { name: 'Tailwind', icon: 'SiTailwindcss', component: SiTailwindcss, color: '#06B6D4', category: 'Frontend' },
@@ -80,7 +80,7 @@ export const TECH_OPTIONS = [
   { name: 'Stripe', icon: 'SiStripe', component: SiStripe, color: '#008CDD', category: 'Tools' },
   { name: 'Sanity', icon: 'SiSanity', component: SiSanity, color: '#F03E2F', category: 'Tools' },
   { name: 'WordPress', icon: 'FaWordpress', component: FaWordpress, color: '#21759B', category: 'Tools' },
-  { name: 'Shopify', icon: 'FaShopify', component: FaShopify, color: '#96BF48', category: 'Tools' },
+  // { name: 'Shopify', icon: 'FaShopify', component: FaShopify, color: '#96BF48', category: 'Tools' },
   { name: 'Linux', icon: 'FaLinux', component: FaLinux, color: '#FCC624', category: 'Tools' },
 ]
 

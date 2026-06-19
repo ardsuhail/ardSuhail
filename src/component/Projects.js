@@ -380,7 +380,7 @@ import {
   SiTailwindcss, SiNextdotjs, SiJavascript, SiMongodb, SiExpress,
   SiTypescript, SiPostgresql, SiMysql, SiRedis, SiFirebase,
   SiSupabase, SiPrisma, SiGraphql, SiVercel, SiNetlify, SiSanity,
-  SiStripe, SiCloudflare, SiSvelte, SiNuxtdotjs, SiDjango, SiFlask,
+  SiStripe, SiCloudflare, SiSvelte, SiNuxt, SiDjango, SiFlask,
   SiSpring, SiLaravel, SiRust, SiGo, SiKubernetes, SiElasticsearch, SiShadcnui
 } from "react-icons/si"
 import {
@@ -393,7 +393,7 @@ import {
 export const iconMap = {
   FaReact: { component: FaReact, color: "#61DAFB" },
   FaPython: { component: FaPython, color: "#3776AB" },
-  FaShopify: { component: FaShopify, color: "#96BF48" },
+  // FaShopify: { component: FaShopify, color: "#96BF48" },
   FaHtml5: { component: FaHtml5, color: "#E34F26" },
   FaCss3Alt: { component: FaCss3Alt, color: "#1572B6" },
   FaNodeJs: { component: FaNodeJs, color: "#339933" },
@@ -426,7 +426,7 @@ export const iconMap = {
   SiStripe: { component: SiStripe, color: "#008CDD" },
   SiCloudflare: { component: SiCloudflare, color: "#F38020" },
   SiSvelte: { component: SiSvelte, color: "#FF3E00" },
-  SiNuxtdotjs: { component: SiNuxtdotjs, color: "#00C58E" },
+  SiNuxt: { component: SiNuxt, color: "#00C58E" },
   SiDjango: { component: SiDjango, color: "#092E20" },
   SiFlask: { component: SiFlask, color: "#000000" },
   SiSpring: { component: SiSpring, color: "#6DB33F" },
@@ -547,11 +547,18 @@ const ProjectCard = ({ project }) => {
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${status.color}`}>
             {status.label}
           </span>
-          {project.category && (
-            <span className="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full capitalize">
-              {CATEGORY_LABELS[project.category] || project.category}
+     {project.category && project.category.length > 0 && (
+    <div className="flex flex-wrap gap-1.5">
+        {project.category.map((cat, index) => (
+            <span 
+                key={index}
+                className="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full capitalize"
+            >
+                {CATEGORY_LABELS[cat] || cat}
             </span>
-          )}
+        ))}
+    </div>
+)}
           <span className={`text-xs font-medium ml-auto ${difficulty.color}`}>
             {difficulty.label}
           </span>
@@ -656,11 +663,21 @@ const Projects = ({ allProjects = [] }) => {
   const [visibleProjects, setVisibleProjects] = useState(6) // Start with 6 projects
 
   // Get unique categories from projects
-  const usedCategories = ["all", ...new Set(allProjects.map(p => p.category).filter(Boolean))]
-
+// Agar ek project multiple categories mein ho sakta hai
+const usedCategories = [
+  "all", 
+  ...new Set(
+    allProjects.reduce((acc, p) => {
+      if (p.category && Array.isArray(p.category)) {
+        acc.push(...p.category);
+      }
+      return acc;
+    }, [])
+  )
+];
   const filtered = filter === "all"
     ? allProjects
-    : allProjects.filter(p => p.category === filter)
+    : allProjects.filter(p => p.category && p.category.includes(filter))
 
   const displayedProjects = filtered.slice(0, visibleProjects)
   const hasMore = visibleProjects < filtered.length
@@ -670,7 +687,7 @@ const Projects = ({ allProjects = [] }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-12">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl" />
