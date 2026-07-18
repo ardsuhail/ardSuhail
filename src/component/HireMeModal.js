@@ -7,7 +7,7 @@ import Link from "next/link";
 const HireMeModal = ({ isOpen, onClose }) => {
   const platforms = [
     { name: "Upwork", link: "https://www.upwork.com/freelancers/~01b54162516864c607" },
-    { name: "Fiverr", link: "https://www.fiverr.com/sellers/ardsuhail" },
+    { name: "Fiverr", link: "https://www.fiverr.com/s/m5pG3Eb" },
     { name: "LinkedIn", link: "https://www.linkedin.com/in/ardsuhail" },
 
   ];
