@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import {
   FaReact, FaPython, FaShopify, FaHtml5, FaCss3Alt, FaNodeJs,
@@ -93,7 +94,9 @@ const Gallery = ({ images, mainImage, title }) => {
     <div className="rounded-2xl overflow-hidden bg-gray-900">
       {/* Main Image */}
       <div className="relative aspect-video w-full">
-        <img
+        <Image
+          width={100}
+          height={100}
           src={allImages[current]?.url || allImages[current]}
           alt={`${title} - ${current + 1}`}
           className="w-full h-full object-cover"
@@ -129,7 +132,7 @@ const Gallery = ({ images, mainImage, title }) => {
               className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-blue-500' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
             >
-              <img src={img?.url || img} alt="" className="w-full h-full object-cover" />
+              <Image width={64} height={48} src={img?.url || img} alt="" className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
