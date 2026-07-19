@@ -85,7 +85,7 @@ export const TECH_OPTIONS = [
 ]
 
 // ===== CONSTANTS =====
-const CATEGORIES = ['fullstack', 'frontend', 'backend', 'ecommerce', 'mobile', 'ai-ml', 'other']
+const CATEGORIES = ['fullstack', 'frontend', 'backend', 'ecommerce', 'mobile','saas', 'ai-ml','freelance-service', 'other']
 const STATUSES = ['completed', 'in-progress', 'planned', 'on-hold']
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced']
 
@@ -669,6 +669,9 @@ const AddProjectForm = () => {
                   <option value="personal">Personal</option>
                   <option value="client">Client</option>
                   <option value="open-source">Open Source</option>
+                  <option value="freelance">Freelance</option>
+                  <option value="gig">Gig</option>
+                  <option value="freelance-service">Freelance Service</option>
                 </select>
               </Field>
 
