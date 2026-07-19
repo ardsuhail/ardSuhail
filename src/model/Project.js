@@ -75,6 +75,14 @@ const ProjectSchema = new mongoose.Schema({
     otherCategory: {
         type: String  // Custom category when 'other' is selected
     },
+    projectType:{
+        type:String,
+        enum:['client','personal','open-source'],
+        default:'personal'
+    },
+    budget: {
+        type: Number,
+    },
     
     // 7. Difficulty Level
     difficulty: {

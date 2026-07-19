@@ -1,23 +1,38 @@
-export async function UploadFile(file,) {
-  const formData = new FormData();
-  formData.append("file", file);
+export async function UploadFile(file) {
+  const payload = {
+    fileName: file.name,
+    contentType: file.type || "application/octet-stream",
+    size: file.size,
+  };
 
-  const res = await fetch(`/api/upload-files`, {
+  const presignRes = await fetch(`/api/upload-files`, {
     method: "POST",
-    body: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
   });
 
-  const text = await res.text(); // 🔥 pehle text padho
+  const presignText = await presignRes.text();
 
-  if (!res.ok) {
-    console.error("Upload API error:", text);
+  if (!presignRes.ok) {
+    console.error("Upload presign error:", presignText);
     throw new Error("Upload failed");
   }
 
-  if (!text) {
-    throw new Error("Empty response from server");
+  const presignData = JSON.parse(presignText);
+  const uploadRes = await fetch(presignData.uploadUrl, {
+    method: "PUT",
+    headers: {
+      "Content-Type": payload.contentType,
+    },
+    body: file,
+  });
+
+  if (!uploadRes.ok) {
+    console.error("Upload to storage failed:", await uploadRes.text());
+    throw new Error("Upload failed");
   }
 
-  const data = JSON.parse(text);
-  return data.url;
+  return presignData.url;
 }

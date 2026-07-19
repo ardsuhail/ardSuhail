@@ -102,6 +102,7 @@ const ProjectCard = ({ item, onEdit, onDelete }) => {
           src={getImageSrc(item.project_image?.url)}
           alt={item.title}
           fill
+          unoptimized
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -141,6 +142,16 @@ const ProjectCard = ({ item, onEdit, onDelete }) => {
               'bg-green-500/15 text-green-400 border-green-500/20'
             } capitalize`}>
               {item.difficulty}
+            </span>
+          )}
+          {item.projectType && (
+            <span className="text-xs px-2.5 py-1 rounded-full border border-violet-500/20 bg-violet-500/15 text-violet-400 capitalize">
+              {item.projectType}
+            </span>
+          )}
+          {item.budget !== undefined && item.budget !== null && item.budget !== '' && (
+            <span className="text-xs px-2.5 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/15 text-emerald-400">
+              ${Number(item.budget).toLocaleString()}
             </span>
           )}
         </div>

@@ -47,6 +47,8 @@ export async function POST(req) {
         const duration = formData.get("duration")
         const proj_Link = formData.get("proj_Link")
         const github_code_link = formData.get("github_code_link") || ""
+        const projectType = formData.get("projectType") || "personal"
+        const budgetValue = formData.get("budget")
         const imageUrl = formData.get("imageUrl")
         const category = formData.getAll("category")
         
@@ -105,6 +107,8 @@ export async function POST(req) {
             duration,
             proj_Link,
             github_code_link,
+            projectType,
+            budget: budgetValue ? Number(budgetValue) : undefined,
             project_image: {
                 url: imageUrl,
                 public_id: imageUrl.split('/').pop()

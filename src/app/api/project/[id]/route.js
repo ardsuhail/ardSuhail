@@ -260,7 +260,7 @@ export async function PATCH(req, { params }) {
         // Simple fields (text inputs)
         const simpleFields = ['title', 'description', 'shortDescription', 'duration', 
                               'proj_Link', 'github_code_link', 'status', 
-                              'difficulty', 'demoVideoUrl'];
+                              'difficulty', 'demoVideoUrl', 'projectType'];
         
         simpleFields.forEach(field => {
             const value = formData.get(field);
@@ -296,6 +296,11 @@ export async function PATCH(req, { params }) {
         const order = formData.get("order");
         if (order !== null && order !== "") {
             updateData.order = parseInt(order);
+        }
+
+        const budget = formData.get("budget");
+        if (budget !== null && budget !== "") {
+            updateData.budget = Number(budget);
         }
         
         // JSON/Array fields

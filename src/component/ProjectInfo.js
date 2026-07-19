@@ -97,6 +97,7 @@ const Gallery = ({ images, mainImage, title }) => {
         <Image
           width={100}
           height={100}
+          unoptimized
           src={allImages[current]?.url || allImages[current]}
           alt={`${title} - ${current + 1}`}
           className="w-full h-full object-cover"
@@ -132,7 +133,7 @@ const Gallery = ({ images, mainImage, title }) => {
               className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-blue-500' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
             >
-              <Image width={64} height={48} src={img?.url || img} alt="" className="w-full h-full object-cover" />
+              <Image width={64} height={48} unoptimized src={img?.url || img} alt="" className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
@@ -261,6 +262,16 @@ const ProjectInfo = ({ projectInfo }) => {
                 {project.category && (
                   <span className="text-xs px-3 py-1 rounded-full bg-gray-50 text-gray-600 border border-gray-100 capitalize">
                     {project.category}
+                  </span>
+                )}
+                {project.projectType && (
+                  <span className="text-xs px-3 py-1 rounded-full bg-violet-50 text-violet-700 border border-violet-100 capitalize">
+                    {project.projectType}
+                  </span>
+                )}
+                {project.budget !== undefined && project.budget !== null && project.budget !== '' && (
+                  <span className="text-xs px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">
+                    Budget: ${Number(project.budget).toLocaleString()}
                   </span>
                 )}
               </div>

@@ -244,6 +244,8 @@ const AddProjectForm = () => {
     github_code_link: '',
     category: [],
     otherCategory: '',
+    projectType: 'personal',
+    budget: '',
     status: 'completed',
     difficulty: 'intermediate',
     isFeatured: false,
@@ -300,6 +302,8 @@ const AddProjectForm = () => {
             github_code_link: p.github_code_link || '',
             category: Array.isArray(p.category) ? p.category : (p.category ? [p.category] : []),
             otherCategory: p.otherCategory || '',
+            projectType: p.projectType || 'personal',
+            budget: p.budget ?? '',
             status: p.status || 'completed',
             difficulty: p.difficulty || 'intermediate',
             isFeatured: p.isFeatured || false,
@@ -657,6 +661,26 @@ const AddProjectForm = () => {
                   placeholder="e.g. 2 months"
                   className={inputCls}
                   required
+                />
+              </Field>
+
+              <Field label="Project Type">
+                <select name="projectType" value={form.projectType} onChange={handleChange} className={selectCls}>
+                  <option value="personal">Personal</option>
+                  <option value="client">Client</option>
+                  <option value="open-source">Open Source</option>
+                </select>
+              </Field>
+
+              <Field label="Budget (optional)">
+                <input
+                  type="number"
+                  name="budget"
+                  min="0"
+                  value={form.budget}
+                  onChange={handleChange}
+                  placeholder="e.g. 5000"
+                  className={inputCls}
                 />
               </Field>
 
