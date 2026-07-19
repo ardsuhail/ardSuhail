@@ -70,14 +70,14 @@ const ProjectSchema = new mongoose.Schema({
     // 6. Category/Type
     category: [{
         type: String,
-        enum: ['fullstack', 'frontend', 'backend', 'ecommerce', 'mobile', 'saas', 'ai-ml', 'other']
+        enum: ['fullstack', 'frontend', 'backend', 'ecommerce', 'mobile', 'saas','freelance-service', 'ai-ml', 'other']
     }],
     otherCategory: {
         type: String  // Custom category when 'other' is selected
     },
     projectType:{
         type:String,
-        enum:['client','personal','open-source'],
+        enum:['client','personal','open-source','freelance','gig','freelance-service'],
         default:'personal'
     },
     budget: {
