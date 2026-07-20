@@ -20,6 +20,11 @@ export const metadata = {
   "Modern Web Developer",
   "Suhail Portfolio",
   "ardsuhail Portfolio",
+  "Suhel",
+  "suhal",
+  "ardsuhel",
+  "ardsuhal",
+  "ardsuha"
 ],
 
   openGraph: {

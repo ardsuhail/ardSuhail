@@ -81,13 +81,13 @@ import connectDB from "@/db/connectDB";
 import Queries from "@/model/Queries";
 import { emailService } from "@/lib/emailService";
 import { NextResponse } from "next/server";
-
+import { sendTelegramMessage } from "@/lib/Teligram";
 export async function POST(req) {
     try {
         await connectDB();
-        
+
         const { name, email, message } = await req.json();
-        
+
         // Validation
         if (!name || !email || !message) {
             return NextResponse.json({
@@ -96,7 +96,7 @@ export async function POST(req) {
                 message: "All fields are required"
             }, { status: 400 });
         }
-        
+
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -106,7 +106,7 @@ export async function POST(req) {
                 message: "Invalid email format"
             }, { status: 400 });
         }
-        
+
         // Save to database
         const newQuery = await Queries.create({
             name,
@@ -115,20 +115,28 @@ export async function POST(req) {
             status: 'pending',
             isRead: false
         });
-        
+
         // Send emails (don't wait for response)
         Promise.all([
             emailService.sendUserConfirmation(name, email, message),
             emailService.sendAdminNotification(name, email, message)
         ]).catch(err => console.error("Email sending failed:", err));
-        
+
+        // Send Telegram message
+        await sendTelegramMessage(`
+            <b>New query On Portfolio</b> 
+           Name: ${name} 
+           Email: ${email}
+           Message: ${message}
+           Time: ${new Date().toLocaleString()}
+            `);
         return NextResponse.json({
             success: true,
             error: false,
             message: "Your query has been submitted successfully! We'll get back to you soon.",
             data: newQuery
         }, { status: 201 });
-        
+
     } catch (error) {
         console.error("Error in POST /api/contact:", error);
         return NextResponse.json({

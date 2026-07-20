@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { FaInstagram, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Mail, FileText, ExternalLink, Heart, Code, Shield, Sparkles } from "lucide-react";
+import { Mail, FileText, ExternalLink, Heart, Code, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -30,7 +30,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-white/95  shadow-md backdrop-blur-xl border-t border-gray-400/50 overflow-hidden">
+    <footer className="relative bg-white/95 shadow-md backdrop-blur-xl border-t border-gray-400/50 overflow-hidden">
       {/* Light Background Elements matching Navbar */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-3xl opacity-50"></div>
@@ -68,7 +68,7 @@ export default function Footer() {
               Let&apos;s build something amazing together.
             </p>
             <div className="flex items-center gap-3 text-sm text-gray-500">
-              <Shield className="w-4 h-4 text-green-500" />
+              <ShieldCheck className="w-4 h-4 text-green-500" />
               <span>Available for new projects</span>
             </div>
           </motion.div>
@@ -155,13 +155,33 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Resources */}
+          {/* Legal + Resources Combined */}
           <motion.div variants={itemVariants}>
             <h4 className="text-lg font-semibold mb-6 flex items-center gap-2 text-gray-900">
-              <FileText className="w-5 h-5 text-green-600" />
-              Resources
+              <ShieldCheck className="w-5 h-5 text-teal-600" />
+              Legal & Resources
             </h4>
             <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="group flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-all duration-300 py-2"
+                >
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    Privacy Policy
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/terms"
+                  className="group flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-all duration-300 py-2"
+                >
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    Terms & Conditions
+                  </span>
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/resume.pdf"
@@ -171,17 +191,6 @@ export default function Footer() {
                   <FileText className="w-4 h-4 text-green-600" />
                   <span className="group-hover:translate-x-1 transition-transform duration-300">
                     Download Resume
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="group flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-all duration-300 py-2"
-                >
-                  <ExternalLink className="w-4 h-4 text-blue-600" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">
-                    View Projects
                   </span>
                 </Link>
               </li>
@@ -201,40 +210,40 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom Section */}
-     <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.4 }}
-  viewport={{ once: true }}
-  className="border-t border-gray-300/50 mt-12 pt-6"
->
-  <div className="flex flex-col items-center gap-3 text-center">
-    
-    {/* Availability Badge - Top on Mobile */}
-    <div className="w-full flex justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-      <span className="inline-flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-200 shadow-sm">
-        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        <span className="text-gray-700 text-sm font-medium">Available for freelance</span>
-      </span>
-    </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-300/50 mt-12 pt-6"
+        >
+          <div className="flex flex-col items-center gap-3 text-center">
+            
+            {/* Availability Badge - Top on Mobile */}
+            <div className="w-full flex justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+              <span className="inline-flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-200 shadow-sm">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-gray-700 text-sm font-medium">Available for freelance</span>
+              </span>
+            </div>
 
-    {/* Copyright Section */}
-    <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4 text-gray-600 text-sm w-full justify-between">
-      <div className="flex items-center gap-2 order-2 sm:order-1">
-        <span>© {currentYear} ArdSuhail</span>
-        <span className="text-gray-400">•</span>
-        <span>All rights reserved</span>
-      </div>
-      
-      <div className="flex items-center gap-2 order-1 sm:order-2">
-        <span>Made with</span>
-        <Heart className="w-3 h-3 text-red-500 fill-current" />
-        <span>by Suhail</span>
-      </div>
-    </div>
+            {/* Copyright Section */}
+            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4 text-gray-600 text-sm w-full justify-between">
+              <div className="flex items-center gap-2 order-2 sm:order-1">
+                <span>© {currentYear} ArdSuhail</span>
+                <span className="text-gray-400">•</span>
+                <span>All rights reserved</span>
+              </div>
+              
+              <div className="flex items-center gap-2 order-1 sm:order-2">
+                <span>Made with</span>
+                <Heart className="w-3 h-3 text-red-500 fill-current" />
+                <span>by Suhail</span>
+              </div>
+            </div>
 
-  </div>
-</motion.div>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );
