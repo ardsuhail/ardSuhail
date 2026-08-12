@@ -2,36 +2,41 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaReact, 
-  FaPython, 
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaPython,
   FaShopify,
   FaNodeJs,
-  FaGitAlt
+  FaGitAlt,
+
 } from "react-icons/fa";
-import { 
-  SiTailwindcss, 
-  SiNextdotjs, 
-  SiJavascript, 
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiJavascript,
   SiExpress,
   SiMongodb,
-  SiPostgresql
+  SiPostgresql,
+  SiSupabase
 } from "react-icons/si";
-import { 
-  Code, 
-  Database, 
-  Palette, 
-  Server, 
-  Zap, 
-  Shield, 
+import {
+  Code,
+  Database,
+  Palette,
+  Server,
+  Zap,
+  Shield,
   Globe,
   Smartphone,
   Rocket,
   Award,
   CheckCircle,
-  Star
+  Star,
+  HardDrive,
+  Cloud,
+  Image
 } from "lucide-react";
 
 const skillsData = {
@@ -119,6 +124,17 @@ const skillsData = {
         color: "from-green-500 to-green-700",
         features: ["NoSQL", "Mongoose ODM", "Aggregation"]
       },
+      {
+        name: "Supabase",
+        icon: <SiSupabase className="w-8 h-8 text-green-500" />,
+        level: 85,
+        description: "Open-source Firebase alternative for backend services",
+        color: "from-green-500 to-green-700",
+        features: ["PostgreSQL Database",
+          "Real-time Subscriptions",
+          "Row Level Security",
+          "Authentication"]
+      },
       // {
       //   name: "PostgreSQL",
       //   icon: <SiPostgresql className="w-8 h-8 text-blue-700" />,
@@ -129,6 +145,29 @@ const skillsData = {
       // }
     ]
   },
+  cloudServices: {
+  title: "Cloud & Media Services",
+  icon: <Cloud className="w-6 h-6" />,
+  description: "Scalable cloud infrastructure and media management solutions",
+  skills: [
+    {
+      name: "Cloudflare R2",
+      icon: <HardDrive className="w-8 h-8 text-orange-500" />,
+      // level: 78,
+      description: "S3-compatible storage with built-in CDN and free egress",
+      color: "from-orange-500 to-orange-700",
+      features: ["Object Storage", "CDN", "Zero Egress Fees"]
+    },
+    {
+      name: "Cloudinary",
+      icon: <Image className="w-8 h-8 text-blue-500" />,
+      // level: 85,
+      description: "End-to-end media management with AI-powered optimization",
+      color: "from-blue-500 to-blue-700",
+      features: ["Image Optimization", "Video Processing", "Digital Asset Management"]
+    }
+  ]
+},
   specialized: {
     title: "Specialized Skills",
     icon: <Zap className="w-6 h-6" />,
@@ -187,19 +226,26 @@ const SkillCard = ({ skill }) => {
         <div className="p-3 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border">
           {skill.icon}
         </div>
-        <div className="flex-1">
+    {skill.level ? (
+
+    <div className="flex-1">
           <h3 className="text-lg font-bold text-gray-900">{skill.name}</h3>
           <div className="flex items-center gap-2 mt-1">
             <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${skill.color}`}></div>
-            <span className={`text-xs font-semibold ${
-              skill.level >= 90 ? 'text-green-600' :
-              skill.level >= 80 ? 'text-blue-600' :
-              'text-yellow-600'
-            }`}>
+            <span className={`text-xs font-semibold ${skill.level >= 90 ? 'text-green-600' :
+                skill.level >= 80 ? 'text-blue-600' :
+                  'text-yellow-600'
+              }`}>
               {skill.level >= 90 ? 'Expert' : skill.level >= 80 ? 'Advanced' : 'Proficient'}
             </span>
           </div>
         </div>
+    ):(
+    <div className="flex-1">
+          <h3 className="text-lg font-bold text-gray-900">{skill.name}</h3>
+         
+        </div>
+      )}    
       </div>
 
       {/* Description */}
@@ -208,7 +254,9 @@ const SkillCard = ({ skill }) => {
       </p>
 
       {/* Progress Bar */}
-      <div className="mb-4">
+   {skill.level && (
+
+   <div className="mb-4">
         <div className="flex justify-between items-center mb-2">
           <span className="text-xs text-gray-500">Proficiency</span>
           <span className="text-sm font-semibold text-gray-700">{skill.level}%</span>
@@ -222,6 +270,7 @@ const SkillCard = ({ skill }) => {
           />
         </div>
       </div>
+   )}   
 
       {/* Features */}
       <div className="space-y-2">
@@ -269,11 +318,11 @@ const Skills = () => {
               My Skills
             </span>
           </h1>
-          
+
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-6"></div>
-          
+
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A comprehensive overview of my technical expertise and the technologies 
+            A comprehensive overview of my technical expertise and the technologies
             I use to build <strong className="text-blue-600">modern, scalable, and high-performance</strong> web applications.
           </p>
 
@@ -331,8 +380,8 @@ const Skills = () => {
             {/* Skills Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.skills.map((skill, skillIndex) => (
-                <SkillCard 
-                  key={skill.name} 
+                <SkillCard
+                  key={skill.name}
                   skill={skill}
                 />
               ))}

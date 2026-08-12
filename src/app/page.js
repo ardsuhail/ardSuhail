@@ -102,6 +102,7 @@ export default function Home() {
     { name: "Next.js", category: "Framework", level: "Expert" },
     { name: "React.js", category: "Library", level: "Expert" },
     { name: "Node.js", category: "Runtime", level: "Advanced" },
+    { name: "Supabase", category: "Database" },
     // { name: "TypeScript", category: "Language", level: "Advanced" },
     { name: "MongoDB", category: "Database", level: "Advanced" },
     { name: "Tailwind CSS", category: "Styling", level: "Expert" },
@@ -324,15 +325,7 @@ export default function Home() {
                     <div className="text-sm text-gray-500 mb-3">
                       {tech.category}
                     </div>
-                    <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
-                      tech.level === 'Expert' 
-                        ? 'bg-green-100 text-green-800' 
-                        : tech.level === 'Advanced'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-yellow-100 text-yellow-800'
-                    }`}>
-                      {tech.level}
-                    </div>
+                
                   </div>
                 </motion.div>
               ))}
