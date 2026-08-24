@@ -4,7 +4,7 @@ import About from "@/component/About";
 export const metadata = {
   title: "About ArdSuhail | Full Stack Web Developer",
   description:
-    "I'm Suhail (@ardsuhail), a Full Stack Web Developer skilled in Next.js, React.js, Node.js, MongoDB, and  API integrations. I build SEO-optimized, high-performance, and modern websites that stand out on Google.",
+    "I'm Suhail (@ardsuhail - Pronounced A-R-D Suhail), a Full Stack Web Developer skilled in Next.js, React.js, Node.js, MongoDB, and  API integrations. I build SEO-optimized, high-performance, and modern websites that stand out on Google.",
  keywords: [
   "Suhail",
   "@ardsuhail",
@@ -24,13 +24,14 @@ export const metadata = {
   "suhal",
   "ardsuhel",
   "ardsuhal",
-  "ardsuha"
+  "ardsuha",
+  "ard suhail"
 ],
 
   openGraph: {
     title: "About ArdSuhail | Full Stack Web Developer",
     description:
-      "Know more about ArdSuhail (@ardsuhail) — a passionate Full Stack Web Developer and Shopify Store Creator skilled in Next.js, React, and Tailwind CSS.",
+      "Know more about ArdSuhail (@ardsuhail - Pronounced as A-R-D Suhail) — a passionate Full Stack Web Developer and Shopify Store Creator skilled in Next.js, React, and Tailwind CSS.",
     url: "https://ardsuhail.com/about",
     siteName: "ArdSuhail Portfolio",
     images: [

@@ -112,7 +112,7 @@ const About = () => {
                             >
                                 <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
                                     Hey <span className="text-2xl">👋</span> I&apos;m{" "}
-                                    <strong className="text-blue-600 font-semibold">Suhail</strong> (@ardsuhail), a passionate{" "}
+                                    <strong className="text-blue-600 font-semibold">Suhail</strong> (@ardsuhail - Pronounced as A-R-D Suhail), a passionate{" "}
                                     <strong className="text-emerald-600">Full Stack Developer</strong> and{" "}
                                     <strong className="text-blue-500">AI Enthusiast</strong> crafting digital experiences that make an impact.
                                 </p>
