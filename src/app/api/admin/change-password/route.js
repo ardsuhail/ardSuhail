@@ -10,7 +10,7 @@ export async function PATCH(req) {
 
     if (!authAdmin) {
       return NextResponse.json(
-        { success: false, message: "Unauthorized" },
+        { success: false, error:true,message: "Unauthorized" },
         { status: 401 },
       );
     }
