@@ -1,7 +1,19 @@
 import connectDB from "@/db/connectDB";
 import AdminSignUp from "@/model/AdminSignUp";
-
+import NextResponse from "next/server";
+import { getAdmin } from "@/lib/Check_Token";
 export async function POST(req) {
+  const authAdmin = await getAdmin();
+  if (!authAdmin) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: true,
+        message: "Unauthorized",
+      },
+      { status: 401 },
+    );
+  }
   await connectDB();
   const { email, otp } = await req.json();
 

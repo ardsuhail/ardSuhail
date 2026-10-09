@@ -4,9 +4,21 @@ import Queries from "@/model/Queries";
 import Reply from "@/model/Reply";
 import { emailService } from "@/lib/emailService";
 import { NextResponse } from "next/server";
+import { getAdmin } from "@/lib/Check_Token";
 
 export async function POST(req) {
     try {
+         const authAdmin = await getAdmin();
+            if (!authAdmin) {
+              return NextResponse.json(
+                {
+                  success: false,
+                  error: true,
+                  message: "Unauthorized",
+                },
+                { status: 401 },
+              );
+            }
         await connectDB();
         
         const { queryId, userEmail, userName, replyMessage, replySubject, repliedBy, originalMessage } = await req.json();
@@ -59,6 +71,17 @@ export async function POST(req) {
 // GET - Get replies for a query
 export async function GET(req) {
     try {
+         const authAdmin = await getAdmin();
+            if (!authAdmin) {
+              return NextResponse.json(
+                {
+                  success: false,
+                  error: true,
+                  message: "Unauthorized",
+                },
+                { status: 401 },
+              );
+            }
         await connectDB();
         const { searchParams } = new URL(req.url);
         const queryId = searchParams.get('queryId');

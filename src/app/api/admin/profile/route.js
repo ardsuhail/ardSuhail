@@ -2,15 +2,29 @@ import AdminSignUp from "@/model/AdminSignUp";
 import connectDB from "@/db/connectDB";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-
+import { getAdmin } from "@/lib/Check_Token";
 export async function GET(req) {
   try {
+    const authAdmin = await getAdmin();
+    if (!authAdmin) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: true,
+          message: "Unauthorized",
+        },
+        { status: 401 },
+      );
+    }
     await connectDB();
 
     // Cookie se token nikalna
     const token = req.cookies.get("token")?.value;
     if (!token) {
-      return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 },
+      );
     }
 
     // Token verify karna
@@ -18,7 +32,10 @@ export async function GET(req) {
     try {
       decoded = jwt.verify(token, process.env.JWT_SECRET);
     } catch (err) {
-      return NextResponse.json({ success: false, message: "Invalid token" }, { status: 401 });
+      return NextResponse.json(
+        { success: false, message: "Invalid token" },
+        { status: 401 },
+      );
     }
 
     const email = decoded.email;
@@ -26,7 +43,10 @@ export async function GET(req) {
     // Admin fetch karna
     const admin = await AdminSignUp.findOne({ email });
     if (!admin) {
-      return NextResponse.json({ success: false, message: "Admin not found" }, { status: 404 });
+      return NextResponse.json(
+        { success: false, message: "Admin not found" },
+        { status: 404 },
+      );
     }
 
     // Password exclude kar ke return
@@ -35,6 +55,9 @@ export async function GET(req) {
     return NextResponse.json({ success: true, admin: adminData });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, message: "Server error" },
+      { status: 500 },
+    );
   }
 }
