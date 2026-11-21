@@ -7,7 +7,7 @@ export async function proxy(request) {
 
   if (!authAdmin) {
     return NextResponse.redirect(
-      new URL("/this-page-does-not-exist", request.url),
+      new URL("/not-found", request.url),
     );
   }
 

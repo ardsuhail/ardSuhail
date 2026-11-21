@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
 import NavSidebar from "@/component/NavSidebar";
-import AdminSidebar from "@/component/AdminSidebar";
 import { AppProvider } from "@/component/Context";
 import Script from "next/script";
 const geistSans = Geist({
@@ -79,7 +78,7 @@ export default function RootLayout({ children }) {
       >
         <AppProvider>
           <NavSidebar />
-          <AdminSidebar />
+          
           <Navbar />
           
           {children}
