@@ -1,6 +1,6 @@
 
 
-import About from "@/component/About";
+import About from "@/component/public/About";
 export const metadata = {
   title: "About ArdSuhail | Full Stack Web Developer",
   description:

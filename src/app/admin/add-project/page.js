@@ -3,7 +3,7 @@ export const fetchCache = "force-no-store";
 export const revalidate = 0;
 
 import React from 'react'
-import AddProject from '@/component/AddProject'
+import AddProject from '@/component/admin/AddProject'
 
 const Page = () => {
   return (

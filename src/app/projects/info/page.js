@@ -1,7 +1,7 @@
 // src/app/projects/info/page.js
 import React from 'react'
 import { getProjectById } from '@/lib/getProjects'
-import ProjectInfo from '@/component/ProjectInfo'
+import ProjectInfo from '@/component/public/ProjectInfo'
 
 export const dynamic = 'force-dynamic'
 

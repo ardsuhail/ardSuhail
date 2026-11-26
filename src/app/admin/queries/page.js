@@ -2,9 +2,9 @@
 "use client";
 import React, { useState, useEffect, useCallback } from 'react';
 import { LoaderCircle, Mail, Filter, RefreshCw, Inbox, CheckCircle, MessageCircle, AlertCircle } from 'lucide-react';
-import QueryCard from '@/component/QueryCard';
-import ReplyModal from '@/component/ReplyModal';
- import QueryReplies from '@/component/QueryReplies';
+import QueryCard from '@/component/admin/QueryCard';
+import ReplyModal from '@/component/admin/ReplyModal';
+ import QueryReplies from '@/component/admin/QueryReplies';
 const Page = () => {
     const [queries, setQueries] = useState([]);
     const [replies, setReplies] = useState({});

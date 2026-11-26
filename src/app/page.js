@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import HireMeModal from "@/component/HireMeModal";
+import HireMeModal from "@/component/public/HireMeModal";
 import { 
   Code, 
   Server, 

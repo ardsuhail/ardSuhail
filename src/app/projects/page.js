@@ -1,8 +1,8 @@
 // src/app/projects/page.js
-export const dynamic = "force-dynamic"
-export const fetchCache = "force-no-store"
+// export const dynamic = "force-dynamic"
+// export const fetchCache = "force-no-store"
 
-import Projects from "@/component/Projects"
+import Projects from "@/component/public/Projects"
 import { getProjects } from "@/lib/getProjects"
 const Page = async () => {
   const projects = await getProjects()

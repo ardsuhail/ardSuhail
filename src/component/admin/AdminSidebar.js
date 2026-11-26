@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { SidebarClose } from "lucide-react";
-import { useAppContext } from "./Context";
+import { useAppContext } from "../Context";
 
 const AdminSidebar = () => {
   const { adminSidebarOpen, setAdminSidebarOpen } = useAppContext();

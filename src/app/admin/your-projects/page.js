@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 export const revalidate = 0;
-import YourProject from '@/component/YourProject';
+import YourProject from '@/component/admin/YourProject';
 const page = () => {
   return (
     <div>
