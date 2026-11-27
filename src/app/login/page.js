@@ -1,9 +1,7 @@
 "use client"
 import React from 'react'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Eye, EyeOff, LoaderCircle } from 'lucide-react'
-import Link from 'next/link'
 const Page = () => {
     const [form, setForm] = useState({
         email: "",
@@ -14,7 +12,6 @@ const Page = () => {
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState("")
     const [error, setError] = useState("")
-    const router = useRouter()
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
